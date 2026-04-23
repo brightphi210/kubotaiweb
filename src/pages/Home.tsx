@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { FaCoins, FaTasks, FaUsers } from 'react-icons/fa';
 import {
-    HiCheckCircle,
-    HiUserGroup,
-    HiLightningBolt,
-    HiCash,
-    HiChartBar,
-    HiShieldCheck
+  HiChartBar,
+  HiCheckCircle,
+  HiLightningBolt,
+  HiShieldCheck,
+  HiUserGroup
 } from 'react-icons/hi';
 import {
-    IoRocketSharp,
-    IoGiftSharp,
-    IoTrophySharp,
-    IoCheckmarkCircle
+  IoCheckmarkCircle,
+  IoGiftSharp,
+  IoRocketSharp,
+  IoTrophySharp
 } from 'react-icons/io5';
-import { FaTasks, FaUsers, FaCoins } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import kubotImage from '../assets/images/kubotImage.png';
 import { GrayBtn, SolidBtn } from '../btns/AllBtns';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import { generalImages } from '../utils/images';
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
     const targetUsers = 50000;
     const targetTasks = 1000000;
     const targetRewards = 500000;
-    
+
     const duration = 2000;
     const steps = 60;
     const increment = duration / steps;
@@ -41,7 +41,7 @@ const Home = () => {
     const timer = setInterval(() => {
       currentStep++;
       const progress = currentStep / steps;
-      
+
       setStats({
         users: Math.floor(targetUsers * progress),
         tasks: Math.floor(targetTasks * progress),
@@ -143,16 +143,39 @@ const Home = () => {
     }
   ];
 
-    useEffect(() => {
-        localStorage.getItem('theme') === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
-    }, []);
+  useEffect(() => {
+    localStorage.getItem('theme') === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+  }, []);
 
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 transition-colors duration-300">
       <Navbar />
 
       {/* Hero Section */}
-      <section id="home" className="relative pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+      <section id="home" className="relative pt-24 pb-0 sm:pt-32 sm:pb-0 lg:pt-40 lg:pb-0 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 bg-amber-50/40 dark:bg-amber-950/10"></div>
+          <div
+            className="absolute inset-0 opacity-25 dark:opacity-5"
+            style={{
+              backgroundImage: `
+          linear-gradient(to right, #d97706 1px, transparent 1px),
+          linear-gradient(to bottom, #d97706 1px, transparent 1px)
+        `,
+              backgroundSize: '48px 48px',
+            }}
+          />
+
+          {/* Dot at grid intersections */}
+          <div
+            className="absolute inset-0 opacity-15 dark:opacity-10"
+            style={{
+              backgroundImage: `radial-gradient(circle, #b45309 1.5px, transparent 1.5px)`,
+              backgroundSize: '48px 48px',
+            }}
+          />
+
+        </div>
         {/* Background Decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-72 h-72 sm:w-96 sm:h-96 bg-blue-100 dark:bg-blue-950/30 rounded-full blur-3xl opacity-50"></div>
@@ -167,22 +190,22 @@ const Home = () => {
                 <IoTrophySharp className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600 dark:text-yellow-400" />
                 <span className="text-xs sm:text-sm font-semibold text-yellow-600 dark:text-yellow-400">Earn While You Complete Tasks</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight animate-slideUp">
                 Turn your Time into{' '}
                 <br />
                 <span className="text-yellow-600 dark:text-yellow-500">
-                 Real Rewards
+                  Real Rewards
                 </span>
               </h1>
-              
+
               <p className="text-sm sm:text-base lg:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 lg:w-full w-[90%] justify-center max-w-2xl mx-auto lg:mx-0 animate-slideUp" style={{ animationDelay: '0.1s' }}>
                 Complete simple tasks, refer friends, and earn tokens that can be redeemed for real rewards. Join thousands of users already earning on Kubotai.
               </p>
 
               <div className="flex sm:flex-row gap-2 sm:gap-2 justify-center lg:justify-start animate-slideUp" style={{ animationDelay: '0.2s' }}>
                 <div>
-                    <SolidBtn text="Start Earning" onClick={() => window.location.href = '#signup'} />
+                  <SolidBtn text="Start Earning" onClick={() => window.location.href = '#signup'} />
                 </div>
                 <div
                 >
@@ -191,6 +214,8 @@ const Home = () => {
               </div>
 
               {/* Stats */}
+
+
               <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-8 sm:mt-6 animate-slideUp" style={{ animationDelay: '0.3s' }}>
                 <div className="text-center lg:text-left">
                   <div className="text-xl sm:text-2xl lg:text-2xl xl:text-2xl font-bold text-blue-600 dark:text-blue-400">
@@ -214,7 +239,7 @@ const Home = () => {
             </div>
 
             {/* Hero Image/Illustration */}
-            <div className="relative mt-8 lg:mt-0">
+            {/* <div className="relative mt-8 lg:mt-0">
               <div className="relative z-10 bg-blue-50/50 dark:bg-neutral-900 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-blue-200 dark:border-neutral-800">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:scale-105 transition-transform duration-300">
@@ -224,7 +249,7 @@ const Home = () => {
                     <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">500+</div>
                     <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Daily Tasks</div>
                   </div>
-                  
+
                   <div className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:scale-105 transition-transform duration-300">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4">
                       <HiCash className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -232,7 +257,7 @@ const Home = () => {
                     <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">$50K+</div>
                     <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Paid Out</div>
                   </div>
-                  
+
                   <div className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:scale-105 transition-transform duration-300">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4">
                       <HiUserGroup className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -240,7 +265,7 @@ const Home = () => {
                     <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">10K+</div>
                     <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Referrals</div>
                   </div>
-                  
+
                   <div className="bg-white dark:bg-neutral-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:scale-105 transition-transform duration-300">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-600 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4">
                       <HiLightningBolt className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -250,6 +275,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+            </div> */}
+
+            <div className="flex items-end justify-center lg:justify-end">
+              <img src={kubotImage} alt="Kubot Image" className="block w-full max-w-lg lg:max-w-full" />
             </div>
           </div>
         </div>
@@ -309,33 +338,29 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8 relative">
             {/* Connection Lines - Hidden on mobile */}
             <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-1 bg-blue-200 dark:bg-blue-900 opacity-20"></div>
-            
+
             {howItWorks.map((step, index) => (
               <div
                 key={index}
-                className={`relative bg-white dark:bg-neutral-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-2 transition-all duration-500 ${
-                  activeStep === index
-                    ? 'border-blue-600 scale-99 shadow-2xl'
-                    : 'border-gray-100 dark:border-neutral-800'
-                }`}
+                className={`relative bg-white dark:bg-neutral-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-2 transition-all duration-500 ${activeStep === index
+                  ? 'border-blue-600 scale-99 shadow-2xl'
+                  : 'border-gray-100 dark:border-neutral-800'
+                  }`}
               >
                 {/* Step Number */}
-                <div className={`absolute -top-2 -right-2 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center font-bold text-lg sm:text-2xl transition-all duration-300 ${
-                  activeStep === index
-                    ? 'bg-blue-600 text-white shadow-xl'
-                    : 'bg-gray-200 dark:bg-neutral-800 text-gray-500 dark:text-gray-300'
-                }`}>
+                <div className={`absolute -top-2 -right-2 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center font-bold text-lg sm:text-2xl transition-all duration-300 ${activeStep === index
+                  ? 'bg-blue-600 text-white shadow-xl'
+                  : 'bg-gray-200 dark:bg-neutral-800 text-gray-500 dark:text-gray-300'
+                  }`}>
                   {step.step}
                 </div>
 
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-all duration-300 ${
-                  activeStep === index
-                    ? 'bg-blue-600'
-                    : 'bg-gray-100 dark:bg-neutral-800'
-                }`}>
-                  <step.icon className={`w-8 h-8 sm:w-10 sm:h-10 ${
-                    activeStep === index ? 'text-white' : 'text-gray-500 dark:text-gray-300'
-                  }`} />
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-all duration-300 ${activeStep === index
+                  ? 'bg-blue-600'
+                  : 'bg-gray-100 dark:bg-neutral-800'
+                  }`}>
+                  <step.icon className={`w-8 h-8 sm:w-10 sm:h-10 ${activeStep === index ? 'text-white' : 'text-gray-500 dark:text-gray-300'
+                    }`} />
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
@@ -361,11 +386,10 @@ const Home = () => {
               <button
                 key={index}
                 onClick={() => setActiveStep(index)}
-                className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${
-                  activeStep === index
-                    ? 'bg-blue-600 w-6 sm:w-8'
-                    : 'bg-gray-300 dark:bg-neutral-700 w-2 sm:w-3'
-                }`}
+                className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${activeStep === index
+                  ? 'bg-blue-600 w-6 sm:w-8'
+                  : 'bg-gray-300 dark:bg-neutral-700 w-2 sm:w-3'
+                  }`}
                 aria-label={`Step ${index + 1}`}
               />
             ))}
@@ -435,7 +459,7 @@ const Home = () => {
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">
                 Since our launch, we've helped thousands of users earn tokens by completing tasks and referring friends. Our platform is trusted, secure, and designed to provide the best earning experience possible.
               </p>
-              
+
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
@@ -446,7 +470,7 @@ const Home = () => {
                     <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Secure and reliable with thousands of satisfied users</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-yellow-500 flex items-center justify-center shrink-0">
                     <HiLightningBolt className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -456,14 +480,14 @@ const Home = () => {
                     <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Get rewarded immediately for completing tasks</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500 flex items-center justify-center shrink-0">
                     <HiUserGroup className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-bold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">Growing Community</h4>
-                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Join a thriving community of earners worldwide</p>  
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Join a thriving community of earners worldwide</p>
                   </div>
                 </div>
               </div>
@@ -472,9 +496,9 @@ const Home = () => {
             <div className="relative mt-8 lg:mt-0">
               <div className="relative z-10 bg-blue-50/50 dark:bg-neutral-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-blue-200 dark:border-neutral-800">
                 <img
-                    src={generalImages.logo}
-                    alt="About Kubotai"
-                    className="rounded-5xl sm:rounded-5xl shadow-sm w-full h-full"
+                  src={generalImages.logo}
+                  alt="About Kubotai"
+                  className="rounded-5xl sm:rounded-5xl shadow-sm w-full h-full"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-200 dark:bg-yellow-950/30 rounded-full blur-3xl"></div>

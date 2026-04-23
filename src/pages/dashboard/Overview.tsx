@@ -1,7 +1,7 @@
 const Overview = () => {
   return (
-    <div>
-      <h2>Overview page</h2>
+    <div className="pt-10">
+      <h2 className="text-4xl text-black dark:text-white">Overview page</h2>
     </div>
   )
 }

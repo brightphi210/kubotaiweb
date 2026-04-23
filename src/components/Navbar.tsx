@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { generalImages } from '../utils/images';
+import { Link } from 'react-router-dom';
 import { SolidBtn } from '../btns/AllBtns';
+import { generalImages } from '../utils/images';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     // Check localStorage first
     const savedTheme = localStorage.getItem('theme');
-    
+
     if (savedTheme === 'dark') {
       setIsDark(true);
       document.documentElement.classList.add('dark');
@@ -46,7 +47,7 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     const newDarkState = !isDark;
     setIsDark(newDarkState);
-    
+
     if (newDarkState) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -63,7 +64,7 @@ const Navbar = () => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -76,7 +77,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
   ];
 
-  const handleNavClick = (href:any) => {
+  const handleNavClick = (href: any) => {
     setIsOpen(false);
     // Smooth scroll to section
     const element = document.querySelector(href);
@@ -87,11 +88,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 dark:border-neutral-900 ${
-        scrolled 
-          ? 'bg-white/90 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-gray-200 dark:border-neutral-800' 
-          : 'bg-white/80 dark:bg-neutral-900/20 backdrop-blur-sm'
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 dark:border-neutral-900 ${scrolled
+        ? 'bg-white/90 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-gray-200 dark:border-neutral-800'
+        : 'bg-white/80 dark:bg-neutral-900/20 backdrop-blur-sm'
+        }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
@@ -99,10 +99,10 @@ const Navbar = () => {
               e.preventDefault();
               handleNavClick('#home');
             }}>
-              <img 
-                src={generalImages.logo} 
-                alt="Kubotai Logo" 
-                className="w-8 h-8 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-110" 
+              <img
+                src={generalImages.logo}
+                alt="Kubotai Logo"
+                className="w-8 h-8 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-110"
               />
             </a>
 
@@ -139,7 +139,9 @@ const Navbar = () => {
               </button>
 
               <div>
-                <SolidBtn text="Get Started" onClick={() => handleNavClick('#signup')} />
+                <Link to="/register">
+                  <SolidBtn text="Get Started" />
+                </Link>
               </div>
             </div>
 
@@ -174,26 +176,24 @@ const Navbar = () => {
 
       {/* Blur Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-all duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-white dark:bg-neutral-900 z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-white dark:bg-neutral-900 z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full">
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-neutral-800">
             <div className="flex items-center gap-2">
-              <img 
-                src={generalImages.logo} 
-                alt="Kubotai Logo" 
-                className="w-8 h-8" 
+              <img
+                src={generalImages.logo}
+                alt="Kubotai Logo"
+                className="w-8 h-8"
               />
               <span className="text-lg sm:text-xl font-bold text-[#1E6FFF] dark:text-[#1E6FFF]">
                 Kubotai
@@ -229,16 +229,9 @@ const Navbar = () => {
 
           {/* Mobile Menu CTA */}
           <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-neutral-800">
-            <a
-              href="#signup"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#signup');
-              }}
-              className="block w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#1E6FFF] hover:bg-blue-700 text-white rounded-xl font-semibold text-sm sm:text-base text-center hover:shadow-xl transition-all duration-300"
-            >
-              Get Started
-            </a>
+            <Link to="/register">
+              <SolidBtn text="Get Started" />
+            </Link>
           </div>
         </div>
       </div>
