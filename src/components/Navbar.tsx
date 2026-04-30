@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FiMoon, FiSun } from 'react-icons/fi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
@@ -8,66 +7,17 @@ import { generalImages } from '../utils/images';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Initialize dark mode from localStorage on mount
   useEffect(() => {
-    // Check localStorage first
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else if (savedTheme === 'light') {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    } else {
-      // If no saved preference, check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDark(prefersDark);
-      if (prefersDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-  }, []);
-
-  // Handle scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    const newDarkState = !isDark;
-    setIsDark(newDarkState);
-
-    if (newDarkState) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
-  // Handle body scroll when mobile menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
   const navLinks = [
@@ -77,175 +27,245 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
   ];
 
-  const handleNavClick = (href: any) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
-    // Smooth scroll to section
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200 dark:border-neutral-900 ${scrolled
-        ? 'bg-white/90 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-gray-200 dark:border-neutral-800'
-        : 'bg-white/80 dark:bg-neutral-900/20 backdrop-blur-sm'
-        }`}>
+      <nav
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0,
+          zIndex: 50,
+          transition: 'all 0.3s',
+          borderBottom: scrolled
+            ? '1px solid rgba(255,255,255,0.06)'
+            : '1px solid rgba(255,255,255,0.04)',
+          background: scrolled
+            ? 'rgba(10,10,10,0.92)'
+            : 'rgba(10,10,10,0.6)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
-            <a href="#home" className="flex items-center gap-2 group" onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#home');
-            }}>
-              <img
-                src={generalImages.logo}
-                alt="Kubotai Logo"
-                className="w-8 h-8 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-110"
-              />
-            </a>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className="text-sm lg:text-sm text-gray-700 dark:text-gray-300 hover:text-[#1E6FFF] dark:hover:text-[#1E6FFF] font-medium transition-colors duration-300 relative group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1E6FFF] dark:bg-[#1E6FFF] group-hover:w-full transition-all duration-300"></span>
-                </a>
-              ))}
+            {/* Logo */}
+            <Link
+              to="/"
+              style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
+            >
+              <img src={generalImages.logo} alt="Kubotai Logo" style={{ width: 32, height: 32 }} />
+              <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#FBC607', letterSpacing: '-0.01em' }}>
+                Kubotai
+              </span>
+            </Link>
+
+            {/* Desktop nav links */}
+            <div style={{ display: 'none' }} className="md-flex-center">
+              <div className="hidden md:flex items-center gap-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    style={{
+                      fontSize: '0.875rem',
+                      fontWeight: 500,
+                      color: 'rgba(255,255,255,0.6)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s',
+                      position: 'relative',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#FBC607'}
+                    onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* CTA & Theme Toggle */}
-            <div className="hidden md:flex items-center gap-3 lg:gap-4">
-              <button
-                onClick={toggleDarkMode}
-                className="w-8.5 h-8.5 lg:w-8.5 lg:h-8.5 cursor-pointer rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors duration-300"
-                aria-label="Toggle theme"
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center gap-4">
+              <Link to="/login" style={{
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                color: 'rgba(255,255,255,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#fff'}
+                onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)'}
               >
-                {isDark ? (
-                  <FiSun className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500" />
-                ) : (
-                  <FiMoon className="w-4 h-4 lg:w-5 lg:h-5 text-[#1E6FFF]" />
-                )}
-              </button>
-
-              <div>
+                Log In
+              </Link>
+              <div style={{ width: '140px' }}>
                 <Link to="/register">
                   <SolidBtn text="Get Started" />
                 </Link>
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden items-center gap-2 sm:gap-3">
-              <button
-                onClick={toggleDarkMode}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors duration-300"
-                aria-label="Toggle theme"
-              >
-                {isDark ? (
-                  <FiSun className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500" />
-                ) : (
-                  <FiMoon className="w-4 h-4 sm:w-5 sm:h-5 text-[#1E6FFF]" />
-                )}
-              </button>
+            {/* Mobile hamburger */}
+            <div className="flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors duration-300"
+                style={{
+                  width: 40, height: 40,
+                  borderRadius: '10px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: '#fff',
+                  transition: 'background 0.2s',
+                }}
                 aria-label="Toggle menu"
               >
-                {isOpen ? (
-                  <IoClose className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300" />
-                ) : (
-                  <HiMenuAlt3 className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300" />
-                )}
+                {isOpen
+                  ? <IoClose style={{ width: 20, height: 20 }} />
+                  : <HiMenuAlt3 style={{ width: 20, height: 20 }} />
+                }
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Blur Overlay */}
+      {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
         onClick={() => setIsOpen(false)}
+        style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(0,0,0,0.7)',
+          backdropFilter: 'blur(4px)',
+          zIndex: 40,
+          opacity: isOpen ? 1 : 0,
+          visibility: isOpen ? 'visible' : 'hidden',
+          transition: 'opacity 0.3s, visibility 0.3s',
+        }}
+        className="md:hidden"
       />
 
-      {/* Mobile Menu */}
+      {/* Mobile drawer */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-white dark:bg-neutral-900 z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        className="md:hidden"
+        style={{
+          position: 'fixed',
+          top: 0, right: 0, bottom: 0,
+          width: '80%', maxWidth: '320px',
+          background: '#111111',
+          borderLeft: '1px solid rgba(255,255,255,0.07)',
+          zIndex: 50,
+          transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1)',
+          display: 'flex', flexDirection: 'column',
+        }}
       >
-        <div className="flex flex-col h-full">
-          {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-neutral-800">
-            <div className="flex items-center gap-2">
-              <img
-                src={generalImages.logo}
-                alt="Kubotai Logo"
-                className="w-8 h-8"
-              />
-              <span className="text-lg sm:text-xl font-bold text-[#1E6FFF] dark:text-[#1E6FFF]">
-                Kubotai
-              </span>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors duration-300"
+        {/* Drawer header */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '1.25rem 1.5rem',
+          borderBottom: '1px solid rgba(255,255,255,0.07)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <img src={generalImages.logo} alt="Kubotai Logo" style={{ width: 28, height: 28 }} />
+            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#FBC607' }}>Kubotai</span>
+          </div>
+          <button
+            onClick={() => setIsOpen(false)}
+            style={{
+              width: 36, height: 36,
+              borderRadius: '9px',
+              background: 'rgba(255,255,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer',
+              color: 'rgba(255,255,255,0.7)',
+            }}
+          >
+            <IoClose style={{ width: 18, height: 18 }} />
+          </button>
+        </div>
+
+        {/* Drawer links */}
+        <div style={{ flex: 1, padding: '1rem 0', overflowY: 'auto' }}>
+          {navLinks.map((link, index) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+              style={{
+                display: 'block',
+                padding: '0.9rem 1.5rem',
+                fontSize: '0.95rem',
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.6)',
+                textDecoration: 'none',
+                borderLeft: '3px solid transparent',
+                transition: 'all 0.2s',
+                animation: isOpen ? `slideIn 0.3s ease-out ${index * 0.07}s both` : 'none',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = '#FBC607';
+                el.style.borderLeftColor = '#FBC607';
+                el.style.background = 'rgba(251,198,7,0.05)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = 'rgba(255,255,255,0.6)';
+                el.style.borderLeftColor = 'transparent';
+                el.style.background = 'transparent';
+              }}
             >
-              <IoClose className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300" />
-            </button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-          {/* Mobile Menu Links */}
-          <div className="flex-1 overflow-y-auto py-4 sm:py-6">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }}
-                className="block px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-neutral-800 hover:text-[#1E6FFF] dark:hover:text-[#1E6FFF] transition-colors duration-300 border-l-4 border-transparent hover:border-[#1E6FFF] dark:hover:border-[#1E6FFF]"
-                style={{
-                  animation: isOpen ? `slideInRight 0.3s ease-out ${index * 0.1}s both` : 'none'
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile Menu CTA */}
-          <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-neutral-800">
-            <Link to="/register">
-              <SolidBtn text="Get Started" />
-            </Link>
-          </div>
+        {/* Drawer CTA */}
+        <div style={{
+          padding: '1.25rem 1.5rem',
+          borderTop: '1px solid rgba(255,255,255,0.07)',
+          display: 'flex', flexDirection: 'column', gap: '0.75rem',
+        }}>
+          <Link
+            to="/login"
+            style={{
+              display: 'block',
+              textAlign: 'center',
+              padding: '12px',
+              borderRadius: '10px',
+              border: '1px solid rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: '0.875rem',
+              fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            Log In
+          </Link>
+          <Link to="/register">
+            <SolidBtn text="Get Started" />
+          </Link>
         </div>
       </div>
 
       <style>{`
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+        .hidden { display: none; }
+        @media (min-width: 768px) {
+          .hidden.md\\:flex { display: flex !important; }
+          .flex.md\\:hidden { display: none !important; }
+        }
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(20px); }
+          to { opacity: 1; transform: translateX(0); }
         }
       `}</style>
     </>
