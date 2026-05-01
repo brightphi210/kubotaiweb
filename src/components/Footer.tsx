@@ -41,19 +41,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <p className="text-sm sm:text-sm text-gray-300 mb-4 sm:mb-6 max-w-sm">
+            <p className="text-sm sm:text-sm text-neutral-200 mb-4 sm:mb-6 max-w-sm">
               Earn tokens by completing tasks and referring friends. Join thousands of users already earning rewards on Kubotai.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-              <div className="flex items-center gap-2 sm:gap-3 text-gray-300">
+              <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
                 <HiMail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FBC607] shrink-0" />
-                <span className="text-xs sm:text-sm break-all">support@kubotai.com</span>
+                <span className="text-[15px] sm:text-sm break-all">support@kubotai.com</span>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 text-gray-300">
+              <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
                 <IoLocationSharp className="w-4 h-4 sm:w-5 sm:h-5 text-[#FBC607] shrink-0" />
-                <span className="text-xs sm:text-sm">Available Worldwide</span>
+                <span className="text-[15px] sm:text-sm">Available Worldwide</span>
               </div>
             </div>
 
@@ -74,13 +74,13 @@ const Footer = () => {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-gray-500 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-gray-300 dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-[15px] sm:text-sm text-neutral-200 dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -91,13 +91,13 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-gray-500 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-gray-300 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -108,13 +108,13 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-gray-500 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-gray-300 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -127,17 +127,17 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="pt-6 sm:pt-8 border-t border-gray-200 dark:border-neutral-800">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <p className="text-gray-600 text-xs sm:text-sm text-center sm:text-left">
+            <p className="text-neutral-600 text-[15px] sm:text-sm text-center sm:text-left">
               © {currentYear} Kubotai. All rights reserved.
             </p>
             <div className="flex items-center gap-4 sm:gap-6">
-              <a href="#privacy" className="text-gray-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-xs sm:text-sm transition-colors duration-300">
+              <a href="#privacy" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Privacy
               </a>
-              <a href="#terms" className="text-gray-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-xs sm:text-sm transition-colors duration-300">
+              <a href="#terms" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Terms
               </a>
-              <a href="#cookies" className="text-gray-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-xs sm:text-sm transition-colors duration-300">
+              <a href="#cookies" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Cookies
               </a>
             </div>

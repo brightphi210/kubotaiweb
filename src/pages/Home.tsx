@@ -80,7 +80,6 @@ const Home = () => {
 
       {/* ── HERO ── */}
       <section id="home" style={{ position: 'relative', paddingTop: '8rem', paddingBottom: '0', overflow: 'hidden' }}>
-        {/* Faint grid background */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', inset: 0,
@@ -145,15 +144,15 @@ const Home = () => {
               </div>
 
               {/* Stats */}
-              <div data-aos="fade-up" data-aos-delay="320" className='flex flex-wrap lg:gap-10 gap-2.5 pt-4 lg:pb-0 pb-10'>
+              <div data-aos="fade-up" data-aos-delay="320" className='flex flex-wrap lg:gap-10 gap-5 pt-4 lg:pb-0 pb-10'>
                 {[
                   { value: `${stats.users.toLocaleString()}+`, label: 'Active Users' },
                   { value: `${(stats.tasks / 1000000).toFixed(0)}M+`, label: 'Tasks Completed' },
                   { value: `$${(stats.rewards / 1000).toFixed(0)}K+`, label: 'Rewards Paid' },
                 ].map((s, i) => (
                   <div key={i}>
-                    <div style={{ fontWeight: 800, color: '#FBC607' }} className='lg:text-xl text-sm '>{s.value}</div>
-                    <div style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.4)', marginTop: '4px' }} className='lg:text-lg text-xs'>{s.label}</div>
+                    <div style={{ fontWeight: 800, color: '#FBC607' }} className='lg:text-2xl text-2xl '>{s.value}</div>
+                    <div style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.4)', marginTop: '4px' }} className='lg:text-lg text-sm'>{s.label}</div>
                   </div>
                 ))}
               </div>
