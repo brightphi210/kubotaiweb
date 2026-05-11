@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <p className="text-sm sm:text-sm text-neutral-200 mb-4 sm:mb-6 max-w-sm">
+            <p className="text-base sm:text-base text-neutral-200 mb-4 sm:mb-6 max-w-sm">
               Earn tokens by completing tasks and referring friends. Join thousands of users already earning rewards on Kubotai.
             </p>
 
@@ -64,9 +64,9 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-neutral-800 dark:bg-neutral-800 flex items-center justify-center text-white ${social.color} transform hover:scale-110 transition-all duration-300`}
+                  className={`w-12 h-12 sm:w-10 sm:h-10 rounded-lg bg-neutral-800 dark:bg-neutral-800 flex items-center justify-center text-white ${social.color} transform hover:scale-110 transition-all duration-300`}
                 >
-                  <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <social.icon className="w-8 h-8 sm:w-5 sm:h-5" />
                 </a>
               ))}
             </div>
@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-base sm:text-base">Product</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
@@ -108,13 +108,13 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-base sm:text-base">Legal</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-base sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>

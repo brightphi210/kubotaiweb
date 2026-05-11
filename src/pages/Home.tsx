@@ -160,7 +160,7 @@ const Home = () => {
 
             {/* Right hero image */}
             <div data-aos="fade-left" data-aos-delay="200"
-              className='w-full'
+              className='w-full mb-10'
             >
               <img src={kubotImage} alt="Kubotai Hero" className='w-full' />
             </div>
@@ -168,7 +168,7 @@ const Home = () => {
         </div>
 
         {/* Partners bar */}
-        <div
+        {/* <div
           style={{ marginTop: '5rem', background: 'rgba(255,255,255,.02)', borderTop: '1px solid rgba(255,255,255,.05)', borderBottom: '1px solid rgba(255,255,255,.05)', padding: '1.5rem 0' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ display: 'flex', alignItems: 'center', gap: '3rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <span style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.25)', letterSpacing: '.1em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Satisfied Partners</span>
@@ -176,7 +176,7 @@ const Home = () => {
               <span key={i} style={{ fontSize: '.85rem', color: 'rgba(255,255,255,.18)', fontWeight: 600, letterSpacing: '.05em' }}>{p}</span>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* ── FEATURES ── */}
@@ -201,6 +201,7 @@ const Home = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.5rem' }}>
             {features.map((f, i) => (
               <div
+                className='text-center'
                 key={i}
                 data-aos="fade-up"
                 data-aos-delay={i * 80}
@@ -226,12 +227,11 @@ const Home = () => {
                   background: 'rgba(251,198,7,.1)',
                   border: '1px solid rgba(251,198,7,.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '1.25rem',
-                }}>
+                }} className='m-auto mb-5'>
                   <f.icon style={{ width: 24, height: 24, color: '#FBC607' }} />
                 </div>
                 <h3 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '.5rem' }}>{f.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,.4)', fontSize: '.875rem', lineHeight: 1.7 }}>{f.description}</p>
+                <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7 }} className='text-base'>{f.description}</p>
               </div>
             ))}
           </div>
@@ -327,8 +327,10 @@ const Home = () => {
                       <step.icon style={{ width: 22, height: 22, color: activeStep === index ? '#000' : 'rgba(255,255,255,.35)' }} />
                     </div>
                     <div>
-                      <h3 style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '.3rem' }}>{step.title}</h3>
-                      <p style={{ color: 'rgba(255,255,255,.4)', fontSize: '.875rem', lineHeight: 1.6 }}>{step.description}</p>
+                      <h3 style={{ fontWeight: 700, marginBottom: '.3rem' }} className='text-base pt-5'>{step.title}</h3>
+                      <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.6 }} className='text-base'>
+                        {step.description}
+                      </p>
                     </div>
                     <div style={{ marginLeft: 'auto', fontSize: '1.4rem', fontWeight: 900, color: activeStep === index ? '#FBC607' : 'rgba(255,255,255,.08)' }}>
                       {step.step}
@@ -403,7 +405,7 @@ const Home = () => {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 50%,rgba(251,198,7,.03) 0%,transparent 60%)', pointerEvents: 'none' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className='grid lg:grid-cols-2 grid-cols-1 gap-10 items-center'>
             <div data-aos="fade-right">
               <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '1.25rem' }}>
                 About <span style={{ color: '#FBC607' }}>Kubotai</span>
@@ -443,7 +445,7 @@ const Home = () => {
                 width: '100%', maxWidth: '420px', borderRadius: '20px',
                 border: '1px solid rgba(255,255,255,.07)',
                 background: 'rgba(255,255,255,.02)',
-                padding: '3rem',
+                padding: '1rem',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 minHeight: '340px',
               }}>
@@ -546,23 +548,23 @@ const FaqSection = () => {
                   width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   padding: '1.1rem 1.5rem',
                   background: 'transparent', border: 'none', cursor: 'pointer',
-                  color: '#fff', fontSize: '.95rem', fontWeight: 500, textAlign: 'left',
+                  color: '#fff', fontWeight: 500, textAlign: 'left',
                   gap: '1rem',
-                }}
+                }} className='text-base'
               >
                 {faq.q}
                 <span style={{
                   width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
                   border: `1px solid ${open === i ? '#FBC607' : 'rgba(255,255,255,.15)'}`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1rem', color: open === i ? '#FBC607' : 'rgba(255,255,255,.3)',
+                  color: open === i ? '#FBC607' : 'rgba(255,255,255,.3)',
                   transition: 'all .3s',
-                }}>
+                }} className='text-base'>
                   {open === i ? '−' : '+'}
                 </span>
               </button>
               {open === i && (
-                <div style={{ padding: '0 1.5rem 1.25rem', color: 'rgba(255,255,255,.45)', fontSize: '.9rem', lineHeight: 1.7 }}>
+                <div style={{ padding: '0 1.5rem 1.25rem', color: 'rgba(255,255,255,.45)', lineHeight: 1.7 }} className='text-base'>
                   {faq.a}
                 </div>
               )}
