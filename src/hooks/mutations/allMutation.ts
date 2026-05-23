@@ -1,175 +1,143 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { delete_requests, get_requests, patch_requests, post_requests } from "../helper/AxioHelper";
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { post_requests } from "../helper/AxioHelper"
 
 
-// ==================== CERTIFICATE HOOKS ====================
-
-export const useGetCategories = () => {
-  const { data, isLoading, isError, isFetched, refetch } = useQuery({
-    queryKey: ["categories"],
-    queryFn: async () => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || "";
-      return get_requests("categories/", token);
-    },
-  });
-
-  return {
-    categories: data,
-    isLoading,
-    isError,
-    isFetched,
-    refetch,
-  };
-};
-
-
-export const useGetProducts = () => {
-  const { data, isLoading, isError, isFetched, refetch } = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || "";
-      return get_requests("products/", token);
-    },
-  });
-
-  return {
-    products: data,
-    isLoading,
-    isError,
-    isFetched,
-    refetch,
-  };
-};
-
-
-export const useGetOrders = () => {
-  const { data, isLoading, isError, isFetched, refetch } = useQuery({
-    queryKey: ["orders"],
-    queryFn: async () => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || "";
-      return get_requests("orders/", token);
-    },
-  });
-
-  return {
-    orders: data,
-    isLoading,
-    isError,
-    isFetched,
-    refetch,
-  };
-};
-
-export const useGetAdminOrders = () => {
-  const { data, isLoading, isError, isFetched, refetch } = useQuery({
-    queryKey: ["admin-orders"],
-    queryFn: async () => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || "";
-      return get_requests("admin/orders/", token);
-    },
-  });
-
-  return {
-    adminOrders: data,
-    isLoading,
-    isError,
-    isFetched,
-    refetch,
-  };
-};
-
-export const useGetSingleProduct = (productId: number) => {
-  const { data, isLoading, isError, isFetched, refetch } = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || "";
-      return get_requests(`products/${productId}/`, token);
-    },
-  });
-
-  return {
-    product: data,
-    isLoading,
-    isError,
-    isFetched,
-    refetch,
-  };
-};
-
-
-export const useCreateProduct = () => {
+export const useClaimToken = (id: any) => {
   const queryClient = useQueryClient()
 
-  const createProduct = useMutation({
+  const claimToken = useMutation({
+    mutationFn: async () => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/tasks/claim-token/${id}/`, {}, token)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["task"] })
+      queryClient.invalidateQueries({ queryKey: ["tokenMined"] })
+      queryClient.invalidateQueries({ queryKey: ["notifications"] })
+    },
+  })
+  return claimToken
+}
+
+
+
+
+export const usePostComment = (id: any) => {
+  const queryClient = useQueryClient()
+
+  const postComment = useMutation({
+    mutationFn: async (data: FormData) => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/news/comment/${id}/`, data, token)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comment"] })
+    },
+  })
+
+  return postComment
+}
+
+
+export const useLikePost = (id: any) => {
+  const queryClient = useQueryClient()
+
+  const likePost = useMutation({
+    mutationFn: async () => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/news/${id}/like/`, {}, token)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["like"] })
+    },
+  })
+
+  return likePost
+}
+
+
+
+
+export const useSetInvitationCode = () => {
+  const queryClient = useQueryClient()
+
+  const invitationCode = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || ""
-      return post_requests(`products/`, data, token)
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/users/set-invitation-code/`, data, token)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] })
+      queryClient.invalidateQueries({ queryKey: ["inviteCode"] })
     },
   })
 
-  return createProduct
+  return invitationCode
 }
 
 
 
-export const useUpdateProduct = () => {
+export const useClaimMining = () => {
   const queryClient = useQueryClient()
 
-  const updateProduct = useMutation({
+  const claimMining = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || ""
-      return patch_requests(`products/${data.id}/`, data, token)
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/mining/update-mining-activity`, data, token)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] })
+      queryClient.invalidateQueries({ queryKey: ["tokenMined"] })
+      queryClient.invalidateQueries({ queryKey: ["notifications"] })
     },
   })
 
-  return updateProduct
+  return claimMining
 }
 
 
-export const useDeleteProduct = () => {
+export const useFeedBack = () => {
   const queryClient = useQueryClient()
 
-  const deleteProduct = useMutation({
-    mutationFn: async (productId: number) => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || ""
-      return delete_requests(`products/${productId}/`, token)
+  const feedbackMutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/users/feedback/`, data, token)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] })
+      queryClient.invalidateQueries({ queryKey: ["feedback"] })
     },
   })
 
-  return deleteProduct
+  return feedbackMutation
 }
 
-export const useUpdateOrderStatus = () => {
+
+export const useChangePassword = () => {
   const queryClient = useQueryClient()
+  const changePassword = useMutation({
+    mutationFn: async (data: any) => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/users/change-password/`, data, token)
+    },
 
-  const updateOrderStatus = useMutation({
-    mutationFn: async ({ orderId, status }: { orderId: number; status: string }) => {
-      const token = (await localStorage.getItem("kubotAccessToken")) || ""
-      return patch_requests(`orders/${orderId}/`, { status }, token)
-    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["orders"] })
-    },
+      queryClient.invalidateQueries({ queryKey: ["changePassword"] })
+    }
   })
 
-  return updateOrderStatus
+  return changePassword
 }
 
-
-export const useNewsletterSubscribe = () => {
-  const subscribe = useMutation({
-    mutationFn: async (email: string) => {
-      return post_requests('newsletter/subscribe/', { email }, '')
+export const useDeleteAccount = () => {
+  const queryClient = useQueryClient()
+  const deleteAccount = useMutation({
+    mutationFn: async () => {
+      const token = (await localStorage.getItem("ku_token")) || ""
+      return post_requests(`/users/delete-account/`, {}, token)
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["deleteAccount"] })
+    }
   })
-  return subscribe
+
+  return deleteAccount
 }

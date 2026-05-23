@@ -13,9 +13,9 @@ function App() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setIsSidebarOpen(!isSidebarOpen);
+  // };
 
   return (
     <>
@@ -30,10 +30,10 @@ function App() {
               element={
                 <ProtectedRoute
                   element={
-                    <div className="flex min-h-screen bg-[#F8FAFC]">
+                    <div className="flex min-h-screen">
                       <SideBar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
                       <div className="flex-1 md:ml-60">
-                        <DashboardNavbar onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+                        <DashboardNavbar />
                         <div className="mt-20 p-4 md:mt-24 md:px-6">
                           <Content />
                         </div>

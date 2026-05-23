@@ -3,14 +3,14 @@ import { get_requests, post_requests, put_request_with_image } from "../helper/A
 
 export const useRegistration = () => {
   return useMutation({
-    mutationFn: (data: any) => post_requests("user", data),
+    mutationFn: (data: any) => post_requests("/user", data),
     // onSuccess shape: response.data = { message, email }
   });
 };
 
 export const useLogin = () => {
   return useMutation({
-    mutationFn: (data: any) => post_requests("users/login/", data),
+    mutationFn: (data: any) => post_requests("/users/login/", data),
     // onSuccess shape: response.data = { user, access, refresh }
     // onError shape (unverified): error.response.data = { email_verified: false, email }
   });
@@ -27,14 +27,14 @@ export const useAdminLogin = () => {
 
 export const useVerifyOTP = () => {
   return useMutation({
-    mutationFn: (data: any) => post_requests("auth/verify-otp/", data),
+    mutationFn: (data: any) => post_requests("/auth/verify-otp/", data),
     // onSuccess shape: response.data = { message, user, access, refresh }
   });
 };
 
 export const useResendOtp = () => {
   return useMutation({
-    mutationFn: (data: any) => post_requests("auth/resend-otp/", data),
+    mutationFn: (data: any) => post_requests("/auth/resend-otp/", data),
     // onSuccess shape: response.data = { message }
   });
 };
@@ -64,7 +64,7 @@ export const useUpdateProfile = () => {
   const updateProfile = useMutation({
     mutationFn: async (data: any) => {
       const token = (await localStorage.getItem("accessToken")) || ""
-      return put_request_with_image(`profile/update/`, data, token)
+      return put_request_with_image(`/profile/update/`, data, token)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["profile"] })
