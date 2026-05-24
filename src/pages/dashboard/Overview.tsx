@@ -14,7 +14,7 @@ import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import { useClaimMining } from '../../hooks/mutations/allMutation';
-import { useGetNews, useGetNotifications, useGetProfile, useGetTotalUserToken } from '../../hooks/queries/allQueries';
+import { useGetNews, useGetProfile, useGetTotalUserToken } from '../../hooks/queries/allQueries';
 
 /* ─── constants ─────────────────────────────────────────────── */
 const TOKENS_PER_SESSION = 3;
@@ -150,15 +150,12 @@ function EarningItem({ amount, timestamp, type = 'mining' }: { amount: number; t
 const Overview = () => {
   /* ── query hooks ── */
   const { getNews, isLoading: newsLoading, refetch: refetchNews } = useGetNews();
-  const { getProfile, isLoading: profileLoading, refetch: refetchProfile } = useGetProfile();
+  const { isLoading: profileLoading, refetch: refetchProfile } = useGetProfile();
   const { getUserToken, isLoading: userTokenLoading } = useGetTotalUserToken();
-  const { getNotifications } = useGetNotifications();
   const { mutate: claimMining, isPending: claimPending } = useClaimMining();
 
   const newsData: any[] = getNews?.data?.data ?? [];
-  const profileData = getProfile?.data?.data;
   const userTokenData = getUserToken?.data?.data;
-  const notificationsData = getNotifications?.data ?? [];
 
   /* ── mining state ── */
   const [isMining, setIsMining] = useState(false);
@@ -169,13 +166,6 @@ const Overview = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  /* ── pulse animation state ── */
-  const [pulsing, setPulsing] = useState(false);
-  useEffect(() => {
-    if (isMining) setPulsing(true);
-    else setPulsing(false);
-  }, [isMining]);
 
   /* ── recent earnings mock data ── */
   const recentEarnings = [
@@ -286,15 +276,6 @@ const Overview = () => {
     setRefreshing(false);
   }, [refetchNews, refetchProfile]);
 
-  const getMiningButtonLabel = () => {
-    if (miningComplete) return 'Claim Tokens';
-    if (!isMining) return 'Start Mining';
-    return 'Mining in progress…';
-  };
-
-  /* ══════════════════════════════════════════════════════════════
-     RENDER
-  ══════════════════════════════════════════════════════════════ */
   return (
     <>
       <style>{`

@@ -129,8 +129,6 @@ const Tasks: React.FC = () => {
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
-    const miningComplete = timeRemaining >= 80 && taskCompleted;
-
     return (
         <>
             <style>{`
