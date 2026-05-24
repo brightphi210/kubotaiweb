@@ -7,7 +7,7 @@ export const useClaimToken = (id: any) => {
 
   const claimToken = useMutation({
     mutationFn: async () => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/tasks/claim-token/${id}/`, {}, token)
     },
     onSuccess: () => {
@@ -27,7 +27,7 @@ export const usePostComment = (id: any) => {
 
   const postComment = useMutation({
     mutationFn: async (data: FormData) => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/news/comment/${id}/`, data, token)
     },
     onSuccess: () => {
@@ -44,7 +44,7 @@ export const useLikePost = (id: any) => {
 
   const likePost = useMutation({
     mutationFn: async () => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/news/${id}/like/`, {}, token)
     },
     onSuccess: () => {
@@ -63,7 +63,7 @@ export const useSetInvitationCode = () => {
 
   const invitationCode = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/users/set-invitation-code/`, data, token)
     },
     onSuccess: () => {
@@ -81,7 +81,7 @@ export const useClaimMining = () => {
 
   const claimMining = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/mining/update-mining-activity`, data, token)
     },
     onSuccess: () => {
@@ -99,7 +99,7 @@ export const useFeedBack = () => {
 
   const feedbackMutation = useMutation({
     mutationFn: async (data: FormData) => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/users/feedback/`, data, token)
     },
     onSuccess: () => {
@@ -115,7 +115,7 @@ export const useChangePassword = () => {
   const queryClient = useQueryClient()
   const changePassword = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/users/change-password/`, data, token)
     },
 
@@ -131,7 +131,7 @@ export const useDeleteAccount = () => {
   const queryClient = useQueryClient()
   const deleteAccount = useMutation({
     mutationFn: async () => {
-      const token = (await localStorage.getItem("ku_token")) || ""
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
       return post_requests(`/users/delete-account/`, {}, token)
     },
     onSuccess: () => {

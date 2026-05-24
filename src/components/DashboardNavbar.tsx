@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FiAward, FiBell, FiTrendingUp } from 'react-icons/fi';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import avatar from '../assets/images/Avatar.png';
 import { useGetNotifications, useGetProfile } from '../hooks/queries/allQueries';
 
 const Navbar = () => {
@@ -32,13 +33,13 @@ const Navbar = () => {
 
         {/* ── Left: avatar + username ── */}
         <Link to="/" className="flex items-center gap-3 no-underline cursor-pointer">
-          <div className="w-9 h-9 rounded-full bg-white/10 border border-white/20 overflow-hidden flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 overflow-hidden flex items-center justify-center shrink-0">
             {profileData?.image ? (
               <img src={profileData.image} alt="avatar" className="w-full h-full object-cover" />
             ) : (
-              <span className="text-sm font-bold text-[#FBC607]">
-                {profileData?.username?.[0]?.toUpperCase() ?? '?'}
-              </span>
+              <div className=''>
+                <img src={avatar} alt="avatar" className='w-full object-cover' />
+              </div>
             )}
           </div>
           <div className="flex flex-col gap-0.5">
