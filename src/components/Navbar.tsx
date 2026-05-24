@@ -1,13 +1,22 @@
 import { useEffect, useState } from 'react';
+import { FiGrid } from 'react-icons/fi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SolidBtn } from '../btns/AllBtns';
 import { generalImages } from '../utils/images';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('kubotAccessToken');
+    setIsLoggedIn(!!token);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -66,49 +75,82 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop nav links */}
-            <div style={{ display: 'none' }} className="md-flex-center">
-              <div className="hidden md:flex items-center gap-8">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                    style={{
-                      fontSize: '0.875rem',
-                      fontWeight: 500,
-                      color: 'rgba(255,255,255,0.6)',
-                      textDecoration: 'none',
-                      transition: 'color 0.2s',
-                      position: 'relative',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#FBC607'}
-                    onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  style={{
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    color: 'rgba(255,255,255,0.6)',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#FBC607'}
+                  onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'}
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-4">
-              <Link to="/login" style={{
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: 'rgba(255,255,255,0.55)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#fff'}
-                onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)'}
-              >
-                Log In
-              </Link>
-              <div style={{ width: '140px' }}>
-                <Link to="/register">
-                  <SolidBtn text="Get Started" />
-                </Link>
-              </div>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => navigate('/dashboard/overview')}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '9px 20px',
+                    borderRadius: '10px',
+                    background: 'rgba(251,198,7,0.12)',
+                    border: '1px solid rgba(251,198,7,0.3)',
+                    color: '#FBC607',
+                    fontSize: '0.875rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(251,198,7,0.2)';
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(251,198,7,0.6)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(251,198,7,0.12)';
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(251,198,7,0.3)';
+                  }}
+                >
+                  <FiGrid style={{ width: 15, height: 15 }} />
+                  Dashboard
+                </button>
+              ) : (
+                /* ── logged out: show Log In + Get Started ── */
+                <>
+                  <Link
+                    to="/login"
+                    style={{
+                      fontSize: '0.875rem',
+                      fontWeight: 600,
+                      color: 'rgba(255,255,255,0.55)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#fff'}
+                    onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)'}
+                  >
+                    Log In
+                  </Link>
+                  <div style={{ width: '140px' }}>
+                    <Link to="/register">
+                      <SolidBtn text="Get Started" />
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Mobile hamburger */}
@@ -235,25 +277,53 @@ const Navbar = () => {
           borderTop: '1px solid rgba(255,255,255,0.07)',
           display: 'flex', flexDirection: 'column', gap: '0.75rem',
         }}>
-          <Link
-            to="/login"
-            style={{
-              display: 'block',
-              textAlign: 'center',
-              padding: '12px',
-              borderRadius: '10px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.7)',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-            }}
-          >
-            Log In
-          </Link>
-          <Link to="/register">
-            <SolidBtn text="Get Started" />
-          </Link>
+          {isLoggedIn ? (
+            /* ── logged in: full-width Dashboard button ── */
+            <button
+              onClick={() => { setIsOpen(false); navigate('/dashboard/overview'); }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '13px',
+                borderRadius: '10px',
+                background: 'rgba(251,198,7,0.12)',
+                border: '1px solid rgba(251,198,7,0.3)',
+                color: '#FBC607',
+                fontSize: '0.875rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              <FiGrid style={{ width: 15, height: 15 }} />
+              Go to Dashboard
+            </button>
+          ) : (
+            /* ── logged out: Log In + Get Started ── */
+            <>
+              <Link
+                to="/login"
+                style={{
+                  display: 'block',
+                  textAlign: 'center',
+                  padding: '12px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'rgba(255,255,255,0.7)',
+                  fontSize: '0.875rem',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                }}
+              >
+                Log In
+              </Link>
+              <Link to="/register">
+                <SolidBtn text="Get Started" />
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
