@@ -306,7 +306,7 @@ const Overview = () => {
   }, [refetchNews, refetchProfile]);
 
   const handleViewAllEarnings = () => {
-    navigate('/earnings');
+    navigate('/dashboard/earnings');
   };
 
   const getEarningTitle = (earning: any) => {
