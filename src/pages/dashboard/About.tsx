@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { FiAlertTriangle, FiChevronRight, FiFileText, FiHelpCircle, FiTrash2, FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDeleteAccount } from '../../hooks/mutations/allMutation'
 
 const NAV_ITEMS = [
-    { label: 'White Paper', icon: FiFileText, href: '/white-paper', danger: false },
-    { label: 'FAQs', icon: FiHelpCircle, href: '/faqs', danger: false },
+    { label: 'White Paper', icon: FiFileText, href: '/dashboard/profile/white-paper', danger: false },
+    { label: 'FAQs', icon: FiHelpCircle, href: '/dashboard/profile/faq', danger: false },
+]
+
+const ACTION_ITEMS = [
     { label: 'Delete Account', icon: FiTrash2, href: null, danger: true, action: 'delete' },
 ]
 
@@ -106,9 +110,53 @@ const About = ({ navigate }: any) => {
                         <h1 className="text-xl font-bold">About</h1>
                     </div>
 
-                    {/* Nav list */}
-                    <div className="fu space-y-3" style={{ animationDelay: '.1s' }}>
-                        {NAV_ITEMS.map((item, i) => {
+                    {/* Navigation Items */}
+                    <div className="fu space-y-3 flex flex-col gap-2" style={{ animationDelay: '.1s' }}>
+                        <Link to="/dashboard/profile/white-paper">
+                            <button
+                                className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 group
+                                                : 'bg-white/[0.04] border-white/[0.07] hover:bg-white/[0.07] hover:border-white/[0.12] hover:shadow-[0_8px_32px_rgba(251,198,7,.06)]'
+                                          `}
+                            >
+                                <div className="flex items-center gap-3.5">
+                                    <div className={'w-9 h-9 rounded-xl flex items-center justify-center border bg-[rgba(251,198,7,.08)] border-[rgba(251,198,7,.2)]'}
+                                    >
+                                        <FiFileText size={16} className={'text-[#FBC607]'} />
+                                    </div>
+                                    <span className={`text-sm font-semibold text-white`}>
+                                        White Paper
+                                    </span>
+                                </div>
+                                <FiChevronRight size={16} className={`transition-transform group-hover:translate-x-0.5 text-white/30`} />
+                            </button>
+                        </Link>
+
+                        <Link to="/dashboard/profile/faq">
+                            <button
+                                className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 group
+                                                : 'bg-white/[0.04] border-white/[0.07] hover:bg-white/[0.07] hover:border-white/[0.12] hover:shadow-[0_8px_32px_rgba(251,198,7,.06)]'
+                                          `}
+                            >
+                                <div className="flex items-center gap-3.5">
+                                    <div className={'w-9 h-9 rounded-xl flex items-center justify-center border bg-[rgba(251,198,7,.08)] border-[rgba(251,198,7,.2)]'}
+                                    >
+                                        <FiHelpCircle size={16} className={'text-[#FBC607]'} />
+                                    </div>
+                                    <span className={`text-sm font-semibold text-white`}>
+                                        FAQs
+                                    </span>
+                                </div>
+                                <FiChevronRight size={16} className={`transition-transform group-hover:translate-x-0.5 text-white/30`} />
+                            </button>
+                        </Link>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mt-10" />
+
+                    {/* Action Items */}
+                    <div className="fu space-y-3 mt-6" style={{ animationDelay: '.2s' }}>
+                        {ACTION_ITEMS.map((item, i) => {
                             const Icon = item.icon
                             return (
                                 <button
@@ -119,7 +167,7 @@ const About = ({ navigate }: any) => {
                                             ? 'bg-red-500/[0.05] border-red-500/[0.15] hover:bg-red-500/[0.1] hover:border-red-500/[0.25] hover:shadow-[0_8px_32px_rgba(239,68,68,.08)]'
                                             : 'bg-white/[0.04] border-white/[0.07] hover:bg-white/[0.07] hover:border-white/[0.12] hover:shadow-[0_8px_32px_rgba(251,198,7,.06)]'
                                         }`}
-                                    style={{ animationDelay: `${0.12 + i * 0.06}s` }}
+                                    style={{ animationDelay: `${0.22 + i * 0.06}s` }}
                                 >
                                     <div className="flex items-center gap-3.5">
                                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center border
@@ -139,9 +187,6 @@ const About = ({ navigate }: any) => {
                             )
                         })}
                     </div>
-
-                    {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mt-10" />
 
                     {/* Footer version */}
                     <div className="fu mt-6 text-center" style={{ animationDelay: '.3s' }}>

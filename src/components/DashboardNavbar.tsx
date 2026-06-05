@@ -32,8 +32,7 @@ const Navbar = () => {
     >
       <div className="w-full px-5 h-[68px] flex items-center justify-between">
 
-        {/* ── Left: avatar + username ── */}
-        <Link to="/" className="flex items-center gap-3 no-underline cursor-pointer">
+        <Link to="/dashboard/profile" className="flex items-center gap-3 no-underline cursor-pointer">
           <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 overflow-hidden flex items-center justify-center shrink-0">
             {profileData?.image ? (
               <img src={profileData.image} alt="avatar" className="w-full h-full object-cover" />

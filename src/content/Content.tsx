@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import About from '../pages/dashboard/About'
 import ChangePassword from '../pages/dashboard/ChangePassword'
 import Earnings from '../pages/dashboard/Earnings'
+import FAQ from '../pages/dashboard/FAQ'
 import Feedback from '../pages/dashboard/Feedback'
 import Friends from '../pages/dashboard/Friend'
 import InviteCode from '../pages/dashboard/InviteCode'
@@ -13,6 +14,7 @@ import ProfileEdit from '../pages/dashboard/ProfileEdit'
 import Rankings from '../pages/dashboard/Rankings'
 import Tasks from '../pages/dashboard/Task'
 import Wallet from '../pages/dashboard/Wallet'
+import WhitePaper from '../pages/dashboard/WhitePaper'
 
 const Content = () => (
   <>
@@ -36,6 +38,8 @@ const Content = () => (
       <Route path="dashboard/profile/edit" element={<ProfileEdit />} />
       <Route path="dashboard/profile/about" element={<About />} />
 
+      <Route path="dashboard/profile/white-paper" element={<WhitePaper />} />
+      <Route path="dashboard/profile/faq" element={<FAQ />} />
 
     </Routes>
   </>
