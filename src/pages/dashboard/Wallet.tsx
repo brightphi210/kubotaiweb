@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 
-interface WalletData {
-    address: string;
-    balance: number;
-    network: string;
-    isConnected: boolean;
-}
-
 const Wallet: React.FC = () => {
     const [showComingSoonModal, setShowComingSoonModal] = useState(false);
 

@@ -10,9 +10,9 @@ import Notification from '../pages/dashboard/Notification'
 import Overview from '../pages/dashboard/Overview'
 import Profile from '../pages/dashboard/Profile'
 import ProfileEdit from '../pages/dashboard/ProfileEdit'
+import Rankings from '../pages/dashboard/Rankings'
 import Tasks from '../pages/dashboard/Task'
 import Wallet from '../pages/dashboard/Wallet'
-import Ranking from '../pages/dashboard/ranking'
 
 const Content = () => (
   <>
@@ -25,7 +25,7 @@ const Content = () => (
 
       {/* ============== NAVBAR ROUTES ============== */}
       <Route path="dashboard/wallet" element={<Wallet />} />
-      <Route path="dashboard/ranking" element={<Ranking />} />
+      <Route path="dashboard/ranking" element={<Rankings />} />
       <Route path="dashboard/earnings" element={<Earnings />} />
       <Route path="dashboard/notification" element={<Notification />} />
 
