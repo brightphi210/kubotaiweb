@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  FiArrowUpRight,
   FiAward,
   FiBarChart2,
+  FiChevronRight,
   FiClock,
   FiPlay,
   FiShare2,
@@ -11,10 +11,11 @@ import {
   FiZap
 } from 'react-icons/fi';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import { useClaimMining } from '../../hooks/mutations/allMutation';
-import { useGetNews, useGetProfile, useGetTotalUserToken } from '../../hooks/queries/allQueries';
+import { useGetNews, useGetProfile, useGetRecentEarnings, useGetTotalUserToken } from '../../hooks/queries/allQueries';
 
 /* ─── constants ─────────────────────────────────────────────── */
 const TOKENS_PER_SESSION = 3;
@@ -88,8 +89,17 @@ function ProgressRing({ progress }: { progress: number }) {
 
 /* ─── blog/news card ─────────────────────────────────────────── */
 function NewsCard({ post }: { post: any }) {
+  const navigate = useNavigate();
+
+  const handleNewsClick = () => {
+    navigate(`/news/${post.id}`, { state: { newsData: post } });
+  };
+
   return (
-    <div className="bg-white/[0.04] border border-white/[0.06] rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(251,198,7,.12)] transition-all duration-200">
+    <div
+      className="bg-white/[0.04] border border-white/[0.06] rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(251,198,7,.12)] transition-all duration-200"
+      onClick={handleNewsClick}
+    >
       <div className="relative h-28 bg-black/20 overflow-hidden">
         {post.image_url ? (
           <img src={post.image_url} alt={post.title} className="w-full h-full object-cover" />
@@ -98,7 +108,10 @@ function NewsCard({ post }: { post: any }) {
         )}
         <button
           className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-black/40 border border-white/10 flex items-center justify-center hover:bg-black/60 transition-colors"
-          onClick={(e) => { e.stopPropagation(); console.log('Share', post.id); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            toast.info('Share feature coming soon!');
+          }}
         >
           <FiShare2 className="w-3 h-3 text-white" />
         </button>
@@ -119,7 +132,7 @@ function NewsCard({ post }: { post: any }) {
 }
 
 /* ─── recent earnings item ─────────────────────────────────── */
-function EarningItem({ amount, timestamp, type = 'mining' }: { amount: number; timestamp: Date; type?: string }) {
+function EarningItem({ amount, timestamp, type = 'mining', title = '' }: { amount: number; timestamp: Date; type?: string; title?: string }) {
   const timeAgo = Math.floor((Date.now() - timestamp.getTime()) / 1000);
   let timeString = '';
 
@@ -128,18 +141,36 @@ function EarningItem({ amount, timestamp, type = 'mining' }: { amount: number; t
   else if (timeAgo < 86400) timeString = `${Math.floor(timeAgo / 3600)}h ago`;
   else timeString = `${Math.floor(timeAgo / 86400)}d ago`;
 
+  const getIcon = () => {
+    switch (type) {
+      case 'task': return '✓';
+      case 'referral': return '👥';
+      case 'mining': return '⛏️';
+      default: return '💰';
+    }
+  };
+
+  const getColor = () => {
+    switch (type) {
+      case 'task': return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
+      case 'referral': return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
+      case 'mining': return 'bg-black/10 text-[#4ade80]';
+      default: return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
+    }
+  };
+
   return (
-    <div className="fu flex items-center justify-between py-3.5 px-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] transition-all duration-200">
+    <div className="flex items-center justify-between py-3.5 px-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] transition-all duration-200">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-[rgba(251,198,7,.15)] border border-[rgba(251,198,7,.3)] flex items-center justify-center">
-          <FiArrowUpRight className="w-4 h-4 text-[#FBC607]" />
+        <div className={`w-10 h-10 rounded-full border border-white/[0.15] flex items-center justify-center text-lg ${getColor()}`}>
+          {getIcon()}
         </div>
         <div>
-          <p className="text-sm font-semibold text-white capitalize">{type}</p>
-          <p className="text-[0.7rem] text-white/40">{timeString}</p>
+          <p className="text-sm font-semibold text-white capitalize">{title.slice(0, 25) || type}...</p>
+          {/* <p className="text-[0.7rem] text-white/40">{timeString}</p> */}
         </div>
       </div>
-      <p className="text-sm font-bold text-[#4ade80]">+{amount.toFixed(4)} KU</p>
+      <p className="text-sm font-bold text-[#4ade80]">+{amount} KU</p>
     </div>
   );
 }
@@ -149,13 +180,19 @@ function EarningItem({ amount, timestamp, type = 'mining' }: { amount: number; t
 ══════════════════════════════════════════════════════════════ */
 const Overview = () => {
   /* ── query hooks ── */
+  const navigate = useNavigate();
   const { getNews, isLoading: newsLoading, refetch: refetchNews } = useGetNews();
   const { isLoading: profileLoading, refetch: refetchProfile } = useGetProfile();
   const { getUserToken, isLoading: userTokenLoading } = useGetTotalUserToken();
   const { mutate: claimMining, isPending: claimPending } = useClaimMining();
+  const { getRecentEarnings, isLoading: earningsLoading } = useGetRecentEarnings();
 
   const newsData: any[] = getNews?.data?.data ?? [];
   const userTokenData = getUserToken?.data?.data;
+  const earningsApiData = getRecentEarnings?.data?.data ?? [];
+
+  /* ─── limit to 6 earnings ─── */
+  const recentEarningsData = earningsApiData.slice(0, 6);
 
   /* ── mining state ── */
   const [isMining, setIsMining] = useState(false);
@@ -166,15 +203,6 @@ const Overview = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  /* ── recent earnings mock data ── */
-  const recentEarnings = [
-    { amount: 3.0, timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), type: 'mining' },
-    { amount: 3.0, timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), type: 'mining' },
-    { amount: 1.5, timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), type: 'bonus' },
-    { amount: 3.0, timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), type: 'mining' },
-    { amount: 2.0, timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), type: 'referral' },
-  ];
 
   /* ── initialize from storage ── */
   useEffect(() => {
@@ -276,6 +304,39 @@ const Overview = () => {
     setRefreshing(false);
   }, [refetchNews, refetchProfile]);
 
+  const handleViewAllEarnings = () => {
+    navigate('/earnings');
+  };
+
+  const getEarningTitle = (earning: any) => {
+    if (earning.task_earning) return earning.task_earning.title;
+    if (earning.referral_earning) return `You referred ${earning.referral_earning.referred_user.username}`;
+    if (earning.mined_token) return `Mining Reward`;
+    return 'Earning';
+  };
+
+  const getEarningAmount = (earning: any) => {
+    if (earning.task_earning) return earning.task_earning.reward_tokens;
+    if (earning.referral_earning) return earning.referral_earning.immediate_bonus;
+    if (earning.mined_token) return earning.mined_token.tokens_mined;
+    return 0;
+  };
+
+  const getEarningDate = (earning: any) => {
+    const dateStr = earning.task_earning?.created_at ||
+      earning.referral_earning?.created_at ||
+      earning.mined_token?.date_earned ||
+      earning.created_at;
+    return new Date(dateStr);
+  };
+
+  const getEarningType = (earning: any) => {
+    if (earning.task_earning) return 'task';
+    if (earning.referral_earning) return 'referral';
+    if (earning.mined_token) return 'mining';
+    return 'other';
+  };
+
   return (
     <>
       <style>{`
@@ -313,7 +374,7 @@ const Overview = () => {
       `}</style>
 
       <div className="min-h-screen px-5 flex justify-center text-white dm-sans">
-        <LoadingOverlay visible={newsLoading || profileLoading || userTokenLoading || claimPending} />
+        <LoadingOverlay visible={newsLoading || profileLoading || userTokenLoading || claimPending || earningsLoading} />
         <div className="w-full max-w-100 flex flex-col pt-5">
 
           <main className="flex-1 pb-32 flex flex-col gap-8">
@@ -427,7 +488,10 @@ const Overview = () => {
               )}
 
               {/* check earnings */}
-              <button className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/[0.05] border border-white/10 text-[#FBC607] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200">
+              <button
+                onClick={handleViewAllEarnings}
+                className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/[0.05] border border-white/10 text-[#FBC607] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200"
+              >
                 <FiBarChart2 className="w-4 h-4" />
                 Check Earnings
               </button>
@@ -488,22 +552,45 @@ const Overview = () => {
                 <p className="text-[0.7rem] text-white/40 mb-4">Track your token earnings history</p>
               </div>
 
-              <div className="space-y-2">
-                {recentEarnings.map((earning, idx) => (
-                  <div key={idx} style={{ animationDelay: `${0.08 + idx * 0.06}s` }}>
-                    <EarningItem
-                      amount={earning.amount}
-                      timestamp={earning.timestamp}
-                      type={earning.type}
-                    />
-                  </div>
-                ))}
-              </div>
+              {earningsLoading ? (
+                <div className="space-y-2">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-16 bg-white/[0.04] rounded-xl animate-pulse" />
+                  ))}
+                </div>
+              ) : recentEarningsData.length === 0 ? (
+                <div className="flex flex-col items-center py-10 gap-2">
+                  <span className="text-3xl">💰</span>
+                  <p className="text-sm text-white/40">No earnings yet</p>
+                  <p className="text-xs text-white/30">Start mining to earn tokens!</p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {recentEarningsData.map((earning: any, idx: number) => (
+                    <div
+                      key={earning.id || idx}
+                      style={{ animationDelay: `${0.08 + idx * 0.06}s` }}
+                      className="fu"
+                    >
+                      <EarningItem
+                        amount={getEarningAmount(earning)}
+                        timestamp={getEarningDate(earning)}
+                        type={getEarningType(earning)}
+                        title={getEarningTitle(earning)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* View All Button */}
-              <button className="fu d7 w-full mt-4 py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/[0.05] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.08] transition-all duration-200">
+              <button
+                onClick={handleViewAllEarnings}
+                className="fu w-full mt-4 py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/[0.05] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.08] transition-all duration-200"
+              >
                 <FiTrendingUp className="w-4 h-4" />
                 View All Earnings
+                <FiChevronRight className="w-4 h-4" />
               </button>
             </div>
 

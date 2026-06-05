@@ -7,6 +7,7 @@ import Feedback from '../pages/dashboard/Feedback'
 import Friends from '../pages/dashboard/Friend'
 import InviteCode from '../pages/dashboard/InviteCode'
 import Market from '../pages/dashboard/Market'
+import NewsDetail from '../pages/dashboard/NewsDetail'
 import Notification from '../pages/dashboard/Notification'
 import Overview from '../pages/dashboard/Overview'
 import Profile from '../pages/dashboard/Profile'
@@ -40,6 +41,7 @@ const Content = () => (
 
       <Route path="dashboard/profile/white-paper" element={<WhitePaper />} />
       <Route path="dashboard/profile/faq" element={<FAQ />} />
+      <Route path="/news/:id" element={<NewsDetail />} />
 
     </Routes>
   </>

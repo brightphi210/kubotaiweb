@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDeleteAccount } from '../../hooks/mutations/allMutation'
 
-const NAV_ITEMS = [
-    { label: 'White Paper', icon: FiFileText, href: '/dashboard/profile/white-paper', danger: false },
-    { label: 'FAQs', icon: FiHelpCircle, href: '/dashboard/profile/faq', danger: false },
-]
 
 const ACTION_ITEMS = [
     { label: 'Delete Account', icon: FiTrash2, href: null, danger: true, action: 'delete' },
