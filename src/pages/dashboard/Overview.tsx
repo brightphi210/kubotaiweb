@@ -135,6 +135,7 @@ function NewsCard({ post }: { post: any }) {
 function EarningItem({ amount, timestamp, type = 'mining', title = '' }: { amount: number; timestamp: Date; type?: string; title?: string }) {
   const timeAgo = Math.floor((Date.now() - timestamp.getTime()) / 1000);
   let timeString = '';
+  console.log(timeString)
 
   if (timeAgo < 60) timeString = 'just now';
   else if (timeAgo < 3600) timeString = `${Math.floor(timeAgo / 60)}m ago`;
