@@ -4,12 +4,11 @@ import {
     FiChevronRight,
     FiCopy,
     FiEdit2,
-    FiGlobe,
     FiLogOut,
     FiMessageSquare,
     FiShield,
     FiUsers,
-    FiX,
+    FiX
 } from "react-icons/fi";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import { IoScanOutline } from "react-icons/io5";
@@ -18,7 +17,7 @@ import {
     MdPersonOutline,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { useGetInvitation, useGetProfile } from "../../hooks/queries/allQueries";
 
@@ -162,6 +161,7 @@ export default function Profile() {
 
             {/* full-screen overlay while profile is loading (mirrors ActivityIndicator block) */}
             <LoadingOverlay visible={profileLoading} />
+            <ToastContainer theme="dark" />
 
             <div className="min-h-screen text-white dm-sans flex justify-center pt-6">
                 <div className="w-full max-w-[420px] flex flex-col">
@@ -186,7 +186,7 @@ export default function Profile() {
                                 )}
                                 {/* edit badge */}
                                 <button
-                                    onClick={() => navigate("/profile/edit")}
+                                    onClick={() => navigate("/dashboard/profile/edit")}
                                     className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#FBC607] flex items-center justify-center shadow-[0_2px_12px_rgba(251,198,7,.5)] hover:scale-110 transition-transform"
                                 >
                                     <FiEdit2 className="w-3 h-3 text-black" />
@@ -198,7 +198,7 @@ export default function Profile() {
                             </p>
 
                             <button
-                                onClick={() => navigate("/profile/edit")}
+                                onClick={() => navigate("/dashboard/profile/edit")}
                                 className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#016FEC] text-white text-sm font-semibold hover:bg-[#0061d4] shadow-[0_4px_20px_rgba(1,111,236,.35)] transition-all hover:-translate-y-0.5"
                             >
                                 <FiEdit2 className="w-3.5 h-3.5" />
@@ -237,28 +237,28 @@ export default function Profile() {
                         <MenuRow
                             icon={MdPersonOutline}
                             label="Invitation Code"
-                            onClick={() => navigate("/invitation-code")}
+                            onClick={() => navigate("/dashboard/profile/invitation-code")}
                         />
 
                         {/* Connect Wallet */}
                         <MenuRow
                             icon={MdOutlineAccountBalanceWallet}
                             label="Connect Wallet"
-                            onClick={() => navigate("/wallet")}
+                            onClick={() => navigate("/dashboard/wallet")}
                         />
 
                         {/* Earning Team */}
                         <MenuRow
                             icon={FiUsers}
                             label="Earning Team"
-                            onClick={() => navigate("/friends")}
+                            onClick={() => navigate("/dashboard/friends")}
                         />
 
                         {/* Account & Security → change-password */}
                         <MenuRow
                             icon={FiShield}
                             label="Account & Security"
-                            onClick={() => navigate("/change-password")}
+                            onClick={() => navigate("/dashboard/profile/change-password")}
                         />
 
                         {/* KYC Verification → "coming soon" toast (same as mobile) */}
@@ -274,22 +274,21 @@ export default function Profile() {
                         <MenuRow
                             icon={HiOutlineInformationCircle}
                             label="About"
-                            onClick={() => navigate("/about")}
+                            onClick={() => navigate("/dashboard/profile/about")}
                         />
 
                         {/* Feedback */}
                         <MenuRow
                             icon={FiMessageSquare}
                             label="Feedback"
-                            onClick={() => navigate("/feedback")}
+                            onClick={() => navigate("/dashboard/profile/feedback")}
                         />
 
-                        {/* Language (no action on mobile either) */}
-                        <MenuRow
+                        {/* <MenuRow
                             icon={FiGlobe}
                             label="Language"
                             onClick={() => { }}
-                        />
+                        /> */}
 
                         <div className="h-2" />
 
@@ -345,7 +344,7 @@ export default function Profile() {
                 visible={showReferralModal}
                 onClose={() => setShowReferralModal(false)}
             >
-                <div className="si relative bg-[#111] border border-white/[0.1] rounded-3xl p-8 mx-4 w-[340px] shadow-2xl dm-sans">
+                <div className="si relative bg-[#111] border border-white/[0.1] rounded-3xl p-8  lg:w-[400px] w-[90%] m-auto shadow-2xl dm-sans">
                     <button
                         onClick={() => setShowReferralModal(false)}
                         className="absolute top-4 right-4 w-7 h-7 rounded-full bg-white/[0.08] flex items-center justify-center hover:bg-white/[0.14] transition-colors"
@@ -368,8 +367,8 @@ export default function Profile() {
                                 <Spinner color="#016FEC" />
                             </div>
                         ) : (
-                            <div className="w-full bg-white/[0.05] border border-[rgba(251,198,7,.25)] rounded-2xl p-4 mb-6">
-                                <p className="text-2xl font-bold tracking-[0.18em] dm-mono text-[#FBC607]">
+                            <div className="w-full bg-white/[0.05] border border-[rgba(251,198,7,.25)] rounded-lg p-4 mb-6">
+                                <p className="text-xl font-bold tracking-[0.18em] dm-mono text-[#FBC607]">
                                     {inviteCode ?? "N/A"}
                                 </p>
                             </div>
@@ -378,17 +377,17 @@ export default function Profile() {
                         <div className="flex gap-3 w-full">
                             <button
                                 onClick={() => setShowReferralModal(false)}
-                                className="flex-1 py-3 rounded-xl bg-white/[0.06] border border-white/[0.1] text-white/70 text-sm font-semibold hover:bg-white/[0.1] transition-all"
+                                className="flex-1 py-3 rounded-lg bg-white/[0.06] border border-white/[0.1] text-white/70 text-sm font-semibold hover:bg-white/[0.1] transition-all"
                             >
                                 Close
                             </button>
                             <button
                                 onClick={handleCopyCode}
                                 disabled={!inviteCode || invitationLoading}
-                                className={`flex-1 py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed
+                                className={`flex-1 py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed
                   ${copied
                                         ? "bg-green-500 text-white shadow-[0_4px_20px_rgba(16,185,129,.35)]"
-                                        : "bg-[#016FEC] text-white shadow-[0_4px_20px_rgba(1,111,236,.35)] hover:bg-[#0061d4]"
+                                        : "bg-[#FBC607] text-black"
                                     }`}
                             >
                                 {copied ? (

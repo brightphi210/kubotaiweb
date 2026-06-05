@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { FiAward, FiBell, FiTrendingUp } from 'react-icons/fi';
+import { FiBell, FiTrendingUp } from 'react-icons/fi';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
+import { TfiCup } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import avatar from '../assets/images/Avatar.png';
 import { useGetNotifications, useGetProfile } from '../hooks/queries/allQueries';
@@ -62,25 +63,33 @@ const Navbar = () => {
         {/* ── Right: action icons ── */}
         <div className="flex items-center gap-3">
 
-          {/* Bell */}
-          <button className="relative bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
-            <FiBell className="w-4 h-4" />
-            {notificationsData.length > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-400" />
-            )}
-          </button>
+          <Link to="/dashboard/notification">
+            <button className="relative bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
+              <FiBell className="w-4 h-4" />
+              {notificationsData.length > 0 && (
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-400" />
+              )}
+            </button>
+          </Link>
 
-          <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
-            <FiAward className="w-4 h-4" />
-          </button>
+          <Link to="/dashboard/ranking">
+            <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
+              <TfiCup className="w-4 h-4" />
+            </button>
+          </Link>
 
-          <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
-            <MdOutlineAccountBalanceWallet className="w-4 h-4" />
-          </button>
 
-          <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
-            <FiTrendingUp className="w-4 h-4" />
-          </button>
+          <Link to="/dashboard/wallet">
+            <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
+              <MdOutlineAccountBalanceWallet className="w-4 h-4" />
+            </button>
+          </Link>
+
+          <Link to="/dashboard/earnings">
+            <button className="bg-transparent border-0 p-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] hover:bg-white/10 transition-colors cursor-pointer text-white/70 leading-none hover:text-white">
+              <FiTrendingUp className="w-4 h-4" />
+            </button>
+          </Link>
         </div>
       </div>
     </nav>

@@ -44,7 +44,7 @@ export const useProfile = () => {
   const { data, isLoading, isError, isFetched, refetch } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
-      const token = (await localStorage.getItem("accessToken")) || "";
+      const token = (await localStorage.getItem("kubotAccessToken")) || "";
       return get_requests("profile/", token);
     },
   });
@@ -63,8 +63,8 @@ export const useUpdateProfile = () => {
 
   const updateProfile = useMutation({
     mutationFn: async (data: any) => {
-      const token = (await localStorage.getItem("accessToken")) || ""
-      return put_request_with_image(`/profile/update/`, data, token)
+      const token = (await localStorage.getItem("kubotAccessToken")) || ""
+      return put_request_with_image(`/users/profile/`, data, token)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["profile"] })
@@ -73,5 +73,3 @@ export const useUpdateProfile = () => {
 
   return updateProfile
 }
-
-
