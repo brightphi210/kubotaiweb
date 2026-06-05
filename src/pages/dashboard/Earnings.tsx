@@ -93,11 +93,6 @@ const Earnings: React.FC = () => {
             <div className="min-h-screen px-4 sm:px-5 py-6 flex justify-center text-white dm-sans">
                 <div className="w-full max-w-100 flex flex-col pb-10">
 
-                    {/* Header */}
-                    <div className="fu d1 sticky top-0 z-40 flex items-center gap-3 py-4 sm:py-5 mb-8 border-b border-white/[0.08]">
-                        <h1 className="text-2xl font-bold">Earnings</h1>
-                    </div>
-
                     {/* Earnings List */}
                     <div className="fu d3">
                         <h2 className="text-lg text-white/40 font-bold mb-4">Recent Earnings</h2>
