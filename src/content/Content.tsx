@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import About from '../pages/dashboard/About'
 import ChangePassword from '../pages/dashboard/ChangePassword'
+import Chats from '../pages/dashboard/Chats'
 import Earnings from '../pages/dashboard/Earnings'
 import FAQ from '../pages/dashboard/FAQ'
 import Feedback from '../pages/dashboard/Feedback'
@@ -25,6 +26,7 @@ const Content = () => (
       <Route path="dashboard/friends" element={<Friends />} />
       <Route path="dashboard/tasks" element={<Tasks />} />
       <Route path="dashboard/profile" element={<Profile />} />
+      <Route path="dashboard/chats" element={<Chats />} />
 
       {/* ============== NAVBAR ROUTES ============== */}
       <Route path="dashboard/wallet" element={<Wallet />} />

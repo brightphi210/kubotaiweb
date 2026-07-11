@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BiMessage } from 'react-icons/bi';
 import {
   FiCheckSquare,
   FiCompass,
@@ -17,6 +18,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 const NAV_ITEMS = [
   { id: 'home', name: 'Home', icon: <FiHome className="w-5 h-5" />, path: '/dashboard/overview' },
   { id: 'friends', name: 'Friends', icon: <FiUsers className="w-5 h-5" />, path: '/dashboard/friends' },
+  { id: 'chat', name: 'Chat', icon: <BiMessage className="w-5 h-5" />, path: '/dashboard/chats' },
   { id: 'market', name: 'Market', icon: <FiCompass className="w-5 h-5" />, path: '/dashboard/market' },
   { id: 'task', name: 'Task', icon: <FiCheckSquare className="w-5 h-5" />, path: '/dashboard/tasks' },
   { id: 'profile', name: 'Profile', icon: <FiUser className="w-5 h-5" />, path: '/dashboard/profile' },
