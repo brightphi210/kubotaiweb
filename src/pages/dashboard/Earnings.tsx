@@ -50,13 +50,13 @@ const Earnings: React.FC = () => {
     const getCategoryColor = (category: string) => {
         switch (category) {
             case 'Task': return {
-                bg: 'bg-[#FBC607]/40',
-                text: 'text-[#FBC607]',
-                border: 'border-[#FBC607]/50'
+                bg: 'bg-[#C9A876]/40',
+                text: 'text-[#C9A876]',
+                border: 'border-[#C9A876]/50'
             };
             case 'Referral': return {
                 bg: 'bg-[rgba(251,198,7,.15)]',
-                text: 'text-[#FBC607]',
+                text: 'text-[#C9A876]',
                 border: 'border-[rgba(251,198,7,.3)]'
             };
             case 'Mining': return {
@@ -99,7 +99,7 @@ const Earnings: React.FC = () => {
 
                         {isLoading ? (
                             <div className="flex flex-col items-center justify-center py-20">
-                                <div className="w-12 h-12 border-4 border-white/[0.15] border-t-[#FBC607] rounded-full animate-spin mb-3" />
+                                <div className="w-12 h-12 border-4 border-white/[0.15] border-t-[#C9A876] rounded-full animate-spin mb-3" />
                                 <p className="text-white/50 text-sm">Loading earnings...</p>
                             </div>
                         ) : earningsApiData.length === 0 ? (
@@ -133,7 +133,7 @@ const Earnings: React.FC = () => {
                                                                 : getEarningTitle(earning)
                                                             }
                                                         </h3>
-                                                        <p className="text-sm font-bold text-[#FBC607] flex-shrink-0">+{amount} KU</p>
+                                                        <p className="text-sm font-bold text-[#C9A876] flex-shrink-0">+{amount} KU</p>
                                                     </div>
                                                     <p className="text-xs text-white/40 mb-2">
                                                         {getEarningDate(earning)}

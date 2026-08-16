@@ -80,7 +80,7 @@ const FAQ = () => {
                     {/* HEADER */}
                     <div className="fu flex flex-col items-start gap-2 mb-6" style={{ animationDelay: '.05s' }}>
                         <div className="flex items-center gap-2">
-                            <FiHelpCircle className="w-5 h-5 text-[#FBC607]" />
+                            <FiHelpCircle className="w-5 h-5 text-[#C9A876]" />
                             <h1 className="text-2xl font-bold">FAQs</h1>
                         </div>
                         <p className="text-xs text-white/40">Frequently Asked Questions about KU Network</p>
@@ -111,7 +111,7 @@ const FAQ = () => {
                                                 transform: expandedId === faq.id ? 'rotate(180deg)' : 'rotate(0deg)',
                                             }}
                                         >
-                                            <FiChevronDown className="w-4 h-4 text-[#FBC607]" />
+                                            <FiChevronDown className="w-4 h-4 text-[#C9A876]" />
                                         </div>
                                     </div>
 

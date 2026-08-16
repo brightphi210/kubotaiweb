@@ -170,8 +170,8 @@ const Tasks: React.FC = () => {
                                 <div className="text-right">
                                     <p className="text-xs text-white/50 mb-1">Total Rewards</p>
                                     <div className="flex items-center justify-end gap-1">
-                                        <p className="text-2xl font-bold text-[#FBC607]">{totalTokensAvailable}</p>
-                                        <p className="text-[#FBC607] font-bold">KU</p>
+                                        <p className="text-2xl font-bold text-[#C9A876]">{totalTokensAvailable}</p>
+                                        <p className="text-[#C9A876] font-bold">KU</p>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ const Tasks: React.FC = () => {
                             <div className="flex items-center gap-2">
                                 <div className="flex-1 h-2 bg-white/20 rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-[#FBC607] rounded-full transition-all duration-500"
+                                        className="h-full bg-[#C9A876] rounded-full transition-all duration-500"
                                         style={{
                                             width: allTasks.length > 0 ? `${(completedTasks.length / allTasks.length) * 100}%` : '0%',
                                         }}
@@ -204,7 +204,7 @@ const Tasks: React.FC = () => {
                             <button
                                 onClick={() => setActiveTab('active')}
                                 className={`flex-1 py-3 px-4 rounded-2xl font-bold text-sm transition-all duration-200 ${activeTab === 'active'
-                                    ? 'bg-gradient-to-br from-[#FBC607] to-[#e0a800] text-black shadow-[0_4px_24px_rgba(251,198,7,.4)]'
+                                    ? 'bg-[#C9A876] text-black shadow-[0_4px_24px_rgba(251,198,7,.4)]'
                                     : 'bg-white/[0.05] border border-white/[0.08] text-white/70 hover:bg-white/[0.08]'
                                     }`}
                             >
@@ -214,7 +214,7 @@ const Tasks: React.FC = () => {
                             <button
                                 onClick={() => setActiveTab('completed')}
                                 className={`flex-1 py-3 px-4 rounded-2xl font-bold text-sm transition-all duration-200 ${activeTab === 'completed'
-                                    ? 'bg-gradient-to-br from-[#FBC607] to-[#e0a800] text-black shadow-[0_4px_24px_rgba(251,198,7,.4)]'
+                                    ? 'bg-[#C9A876] text-black shadow-[0_4px_24px_rgba(251,198,7,.4)]'
                                     : 'bg-white/[0.05] border border-white/[0.08] text-white/70 hover:bg-white/[0.08]'
                                     }`}
                             >
@@ -229,7 +229,7 @@ const Tasks: React.FC = () => {
                         <div className="fu d4">
                             {isLoading || completedTaskLoading ? (
                                 <div className="flex flex-col items-center justify-center py-20">
-                                    <div className="w-12 h-12 border-4 border-white/20 border-t-[#FBC607] rounded-full animate-spin mb-3" />
+                                    <div className="w-12 h-12 border-4 border-white/20 border-t-[#C9A876] rounded-full animate-spin mb-3" />
                                     <p className="text-white/40 text-sm">Loading tasks...</p>
                                 </div>
                             ) : activeTab === 'active' ? (
@@ -255,7 +255,7 @@ const Tasks: React.FC = () => {
                                                     />
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                                            <span className="text-[0.7rem] font-bold px-2 py-0.5 rounded bg-[rgba(251,198,7,.15)] text-[#FBC607]">
+                                                            <span className="text-[0.7rem] font-bold px-2 py-0.5 rounded bg-[rgba(251,198,7,.15)] text-[#C9A876]">
                                                                 {task.category}
                                                             </span>
                                                             {task.duration && (
@@ -304,7 +304,7 @@ const Tasks: React.FC = () => {
                                                 />
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center gap-2 mb-1">
-                                                        <span className="text-[0.7rem] font-bold px-2 py-0.5 rounded bg-[rgba(251,198,7,.15)] text-[#FBC607]">
+                                                        <span className="text-[0.7rem] font-bold px-2 py-0.5 rounded bg-[rgba(251,198,7,.15)] text-[#C9A876]">
                                                             {task.category}
                                                         </span>
                                                     </div>
@@ -356,7 +356,7 @@ const Tasks: React.FC = () => {
 
                             {/* Info */}
                             <div className="flex items-center justify-between gap-2">
-                                <span className="text-[0.75rem] font-bold px-2 py-1 rounded-lg bg-[rgba(251,198,7,.15)] text-[#FBC607]">
+                                <span className="text-[0.75rem] font-bold px-2 py-1 rounded-lg bg-[rgba(251,198,7,.15)] text-[#C9A876]">
                                     {selectedTask.category}
                                 </span>
                                 <span className="text-[0.75rem] text-white/50">
@@ -375,14 +375,14 @@ const Tasks: React.FC = () => {
                             {!taskCompleted && !timerActive ? (
                                 <>
                                     <div className="rounded-xl p-3 bg-[rgba(251,198,7,.15)] border border-[rgba(251,198,7,.3)]">
-                                        <p className="text-xs text-[#FBC607] text-center">
+                                        <p className="text-xs text-[#C9A876] text-center">
                                             💡 Complete the task to unlock your reward
                                         </p>
                                     </div>
 
                                     <button
                                         onClick={handlePerformTask}
-                                        className="w-full py-3 px-4 rounded-2xl bg-gradient-to-br from-[#FBC607] to-[#e0a800] text-black font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
+                                        className="w-full py-3 px-4 rounded-2xl bg-[#C9A876] text-black font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
                                     >
                                         <FiPlay className="w-4 h-4" />
                                         Perform Task
@@ -391,7 +391,7 @@ const Tasks: React.FC = () => {
                             ) : timerActive && timeRemaining > 0 ? (
                                 <>
                                     <div className="rounded-xl p-3 bg-[rgba(251,198,7,.15)] border border-[rgba(251,198,7,.3)]">
-                                        <p className="text-xs text-[#FBC607] text-center mb-2">
+                                        <p className="text-xs text-[#C9A876] text-center mb-2">
                                             ⏱️ Please complete the task
                                         </p>
                                         <div className="text-center">
@@ -461,7 +461,7 @@ const Tasks: React.FC = () => {
 
                         <button
                             onClick={() => setShowSuccessModal(false)}
-                            className="w-full py-3 px-4 rounded-2xl bg-gradient-to-br from-[#FBC607] to-[#e0a800] text-black font-bold text-sm transition-all hover:opacity-90"
+                            className="w-full py-3 px-4 rounded-2xl bg-[#C9A876] text-black font-bold text-sm transition-all hover:opacity-90"
                         >
                             Awesome!
                         </button>

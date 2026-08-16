@@ -236,7 +236,7 @@ const CoinDetailsModal = ({
                 {isLoading ? (
                     <div className="flex items-center justify-center py-16 sm:py-20">
                         <div className="text-center">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-white/20 border-t-[#FBC607] rounded-full animate-spin mx-auto mb-3 sm:mb-4" />
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-white/20 border-t-[#C9A876] rounded-full animate-spin mx-auto mb-3 sm:mb-4" />
                             <p className="text-white/40 font-medium text-sm sm:text-base">Loading details...</p>
                         </div>
                     </div>
@@ -286,9 +286,9 @@ const CoinDetailsModal = ({
                                     {formatMarketCap(coin.market_data?.total_volume?.usd || 0)}
                                 </p>
                             </div>
-                            <div className="bg-gradient-to-br from-[#FBC607]/10 to-[#FBC607]/5 border border-[#FBC607]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 hover:from-[#FBC607]/15 transition-colors">
+                            <div className="bg-gradient-to-br from-[#C9A876]/10 to-[#C9A876]/5 border border-[#C9A876]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 hover:from-[#C9A876]/15 transition-colors">
                                 <p className="text-white/40 text-xs mb-2 sm:mb-3 uppercase tracking-wide">Market Cap</p>
-                                <p className="text-[#FBC607] font-bold text-xl sm:text-2xl">
+                                <p className="text-[#C9A876] font-bold text-xl sm:text-2xl">
                                     {formatMarketCap(coin.market_data?.market_cap?.usd || 0)}
                                 </p>
                             </div>
@@ -340,7 +340,7 @@ const CoinDetailsModal = ({
                                         className="flex items-center justify-between bg-white/[0.03] border border-white/10 p-3 sm:p-4 rounded-lg sm:rounded-xl hover:bg-white/5 hover:border-white/20 transition-all duration-200 group active:scale-95"
                                     >
                                         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                                            <FiGlobe className="w-4 h-4 sm:w-5 sm:h-5 text-[#FBC607] group-hover:scale-110 transition-transform flex-shrink-0" />
+                                            <FiGlobe className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A876] group-hover:scale-110 transition-transform flex-shrink-0" />
                                             <span className="text-white font-medium text-sm sm:text-base">Website</span>
                                         </div>
                                         <FiArrowUp className="w-3 h-3 sm:w-4 sm:h-4 text-white/40 group-hover:text-white/60 rotate-45 transition-colors flex-shrink-0" />
@@ -528,7 +528,7 @@ const Market = () => {
                                         placeholder={`Search ${activeTab === 'memes' ? 'meme coins' : 'coins'}...`}
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl pl-9 sm:pl-10 pr-9 sm:pr-10 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-white/40 focus:outline-none focus:border-[#FBC607] focus:bg-white/[0.08] transition-all duration-200"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl pl-9 sm:pl-10 pr-9 sm:pr-10 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-white/40 focus:outline-none focus:border-[#C9A876] focus:bg-white/[0.08] transition-all duration-200"
                                     />
                                     {searchQuery && (
                                         <button
@@ -550,7 +550,7 @@ const Market = () => {
                                         key={tab.key}
                                         onClick={() => setActiveTab(tab.key)}
                                         className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0 active:scale-95 ${activeTab === tab.key
-                                            ? 'bg-[#FBC607] text-black shadow-lg shadow-[#FBC607]/30'
+                                            ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/30'
                                             : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
                                             }`}
                                     >
@@ -560,7 +560,7 @@ const Market = () => {
                                             <span
                                                 className={`ml-1 px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold transition-colors ${activeTab === tab.key
                                                     ? 'bg-black/20 text-black'
-                                                    : 'bg-[#FBC607]/20 text-[#FBC607]'
+                                                    : 'bg-[#C9A876]/20 text-[#C9A876]'
                                                     }`}
                                             >
                                                 {watchlist.length}
@@ -659,8 +659,8 @@ const Market = () => {
                                                             >
                                                                 <FiBookmark
                                                                     className="w-4 h-4"
-                                                                    fill={isInWatchlist ? '#FBC607' : 'none'}
-                                                                    color={isInWatchlist ? '#FBC607' : 'currentColor'}
+                                                                    fill={isInWatchlist ? '#C9A876' : 'none'}
+                                                                    color={isInWatchlist ? '#C9A876' : 'currentColor'}
                                                                 />
                                                             </button>
                                                         </div>

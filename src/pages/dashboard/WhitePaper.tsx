@@ -89,7 +89,7 @@ const WhitePaper = () => {
                     {/* HEADER */}
                     <div className="fu flex flex-col items-start gap-3 mb-6" style={{ animationDelay: '.05s' }}>
                         <h1 className="text-2xl font-bold">WHITE PAPER</h1>
-                        <h2 className="text-sm font-semibold text-[#FBC607]">KUBOT AI / KU NETWORK</h2>
+                        <h2 className="text-sm font-semibold text-[#C9A876]">KUBOT AI / KU NETWORK</h2>
                         <p className="text-xs text-white/40">Version 1.0 | October 2025</p>
                     </div>
 
@@ -106,7 +106,7 @@ const WhitePaper = () => {
                             >
                                 {/* SECTION TITLE */}
                                 <div className="flex items-start justify-between gap-3 mb-3">
-                                    <h3 className="text-sm font-semibold text-[#FBC607] leading-snug">{section.title}</h3>
+                                    <h3 className="text-sm font-semibold text-[#C9A876] leading-snug">{section.title}</h3>
                                     <button className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.1] hover:border-white/[0.15] transition-all">
                                         <FiShare2 className="w-3.5 h-3.5 text-white/40 hover:text-white/60" />
                                     </button>
@@ -121,7 +121,7 @@ const WhitePaper = () => {
 
                         {/* LEGAL DISCLAIMER */}
                         <div className="fu rounded-2xl p-4 bg-[rgba(251,198,7,.05)] border border-[rgba(251,198,7,.12)] mt-6" style={{ animationDelay: '.5s' }}>
-                            <h3 className="text-sm font-semibold text-[#FBC607] mb-2">Legal Disclaimer</h3>
+                            <h3 className="text-sm font-semibold text-[#C9A876] mb-2">Legal Disclaimer</h3>
                             <p className="text-xs text-white/50 leading-relaxed">
                                 This document is for informational purposes only and does not constitute financial advice, nor is it a guarantee of future performance or profits. Users should perform their own due diligence.
                             </p>

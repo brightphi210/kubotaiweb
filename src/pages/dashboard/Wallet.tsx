@@ -47,9 +47,9 @@ const Wallet: React.FC = () => {
                 <div className="w-full max-w-100 flex flex-col pb-20">
                     <div className="fu d2 flex flex-col items-center justify-center py-24">
                         <div className="relative w-40 h-40 mb-8">
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#FBC607] to-[#e0a800] rounded-full opacity-10" />
-                            <div className="absolute inset-4 bg-gradient-to-br from-[#FBC607] to-[#e0a800] rounded-full opacity-20" />
-                            <div className="absolute inset-8 bg-gradient-to-br from-[#FBC607] to-[#e0a800] rounded-full opacity-30 flex items-center justify-center text-5xl">
+                            <div className="absolute inset-0 bg-[#C9A876] rounded-full opacity-10" />
+                            <div className="absolute inset-4 bg-[#C9A876] rounded-full opacity-20" />
+                            <div className="absolute inset-8 bg-[#C9A876] rounded-full opacity-30 flex items-center justify-center text-5xl">
                                 💼
                             </div>
                         </div>
@@ -61,7 +61,7 @@ const Wallet: React.FC = () => {
 
                         <button
                             onClick={handleConnectWallet}
-                            className="fu d3 w-full py-2.5 px-6 rounded-md bg-gradient-to-br from-[#FBC607] to-[#e0a800] text-black font-bold text-base transition-all hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_4px_24px_rgba(251,198,7,.4)]"
+                            className="fu d3 w-full py-2.5 px-6 rounded-md bg-[#C9A876] text-black font-bold text-base transition-all hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_4px_24px_rgba(251,198,7,.4)]"
                         >
                             Connect Wallet
                         </button>
@@ -100,7 +100,7 @@ const Wallet: React.FC = () => {
                             {/* Content */}
                             <div className="flex flex-col items-center text-center">
                                 <div className="relative w-24 h-24 mb-6">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FBC607] to-[#e0a800] rounded-full opacity-20 animate-pulse" />
+                                    <div className="absolute inset-0 bg-[#C9A876] rounded-full opacity-20 animate-pulse" />
                                     <div className="absolute inset-0 flex items-center justify-center text-4xl">
                                         🚀
                                     </div>

@@ -25,7 +25,7 @@ const RankingItem: React.FC<RankingItemProps> = ({ leader, index }) => {
     };
 
     const getRankColor = (rank: number) => {
-        if (rank === 1) return 'text-[#FBC607]';
+        if (rank === 1) return 'text-[#C9A876]';
         if (rank === 2) return 'text-white/70';
         if (rank === 3) return 'text-[rgba(251,198,7,.8)]';
         return 'text-white/60';
@@ -52,13 +52,13 @@ const RankingItem: React.FC<RankingItemProps> = ({ leader, index }) => {
                     />
                 ) : (
                     <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[rgba(251,198,7,.15)] flex items-center justify-center border border-[rgba(251,198,7,.3)]">
-                        <span className="text-xs sm:text-sm font-bold text-[#FBC607]">{getInitials(username)}</span>
+                        <span className="text-xs sm:text-sm font-bold text-[#C9A876]">{getInitials(username)}</span>
                     </div>
                 )}
 
                 {/* Badge for top 3 */}
                 {isTopThree && (
-                    <div className="absolute -top-2 -right-2 w-5 sm:w-6 h-5 sm:h-6 bg-[#FBC607] rounded-full flex items-center justify-center text-[0.6rem] sm:text-xs font-bold text-black border-2 border-white/[0.15] shadow-md">
+                    <div className="absolute -top-2 -right-2 w-5 sm:w-6 h-5 sm:h-6 bg-[#C9A876] rounded-full flex items-center justify-center text-[0.6rem] sm:text-xs font-bold text-black border-2 border-white/[0.15] shadow-md">
                         {rank === 1 ? '👑' : '⭐'}
                     </div>
                 )}
@@ -118,7 +118,7 @@ const Rankings: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('regional')}
                             className={`pb-2 sm:pb-3 text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap ${activeTab === 'regional'
-                                ? 'text-[#FBC607] border-b-2 border-[#FBC607]'
+                                ? 'text-[#C9A876] border-b-2 border-[#C9A876]'
                                 : 'text-white/60 hover:text-white/80'
                                 }`}
                         >
@@ -127,7 +127,7 @@ const Rankings: React.FC = () => {
                         <button
                             onClick={() => setActiveTab('global')}
                             className={`pb-2 sm:pb-3 text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap ${activeTab === 'global'
-                                ? 'text-[#FBC607] border-b-2 border-[#FBC607]'
+                                ? 'text-[#C9A876] border-b-2 border-[#C9A876]'
                                 : 'text-white/60 hover:text-white/80'
                                 }`}
                         >
@@ -138,7 +138,7 @@ const Rankings: React.FC = () => {
                     {/* Rankings List */}
                     {isLoading ? (
                         <div className="fu d3 flex flex-col items-center justify-center py-12 sm:py-20">
-                            <div className="w-10 sm:w-12 h-10 sm:h-12 border-4 border-white/[0.15] border-t-[#FBC607] rounded-full animate-spin mb-2 sm:mb-3" />
+                            <div className="w-10 sm:w-12 h-10 sm:h-12 border-4 border-white/[0.15] border-t-[#C9A876] rounded-full animate-spin mb-2 sm:mb-3" />
                             <p className="text-white/50 text-xs sm:text-sm">Loading rankings...</p>
                         </div>
                     ) : displayedRankings.length === 0 ? (

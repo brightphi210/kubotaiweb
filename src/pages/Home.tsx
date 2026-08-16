@@ -54,12 +54,12 @@ const Home = () => {
   }, []);
 
   const features = [
-    { icon: FaTasks, title: 'Complete Tasks', description: 'Browse through various tasks and complete them to earn tokens instantly.', color: '#FBC607' },
-    { icon: FaUsers, title: 'Refer Friends', description: 'Invite your friends and earn bonus tokens for every successful referral.', color: '#FBC607' },
-    { icon: FaCoins, title: 'Earn Tokens', description: 'Accumulate tokens that can be redeemed for rewards or withdrawn as cash.', color: '#FBC607' },
-    { icon: HiChartBar, title: 'Track Progress', description: 'Monitor your earnings and progress with detailed analytics and reports.', color: '#FBC607' },
-    { icon: HiLightningBolt, title: 'Instant Rewards', description: 'Get rewarded immediately upon task completion with no delays.', color: '#FBC607' },
-    { icon: HiShieldCheck, title: 'Secure Platform', description: 'Your data and earnings are protected with enterprise-grade security.', color: '#FBC607' },
+    { icon: FaTasks, title: 'Complete Tasks', description: 'Browse through various tasks and complete them to earn tokens instantly.', color: '#C9A876' },
+    { icon: FaUsers, title: 'Refer Friends', description: 'Invite your friends and earn bonus tokens for every successful referral.', color: '#C9A876' },
+    { icon: FaCoins, title: 'Earn Tokens', description: 'Accumulate tokens that can be redeemed for rewards or withdrawn as cash.', color: '#C9A876' },
+    { icon: HiChartBar, title: 'Track Progress', description: 'Monitor your earnings and progress with detailed analytics and reports.', color: '#C9A876' },
+    { icon: HiLightningBolt, title: 'Instant Rewards', description: 'Get rewarded immediately upon task completion with no delays.', color: '#C9A876' },
+    { icon: HiShieldCheck, title: 'Secure Platform', description: 'Your data and earnings are protected with enterprise-grade security.', color: '#C9A876' },
   ];
 
   const howItWorks = [
@@ -75,7 +75,7 @@ const Home = () => {
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#000000', color: '#fff' }}>
       <Navbar />
 
       {/* ── HERO ── */}
@@ -83,16 +83,16 @@ const Home = () => {
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'linear-gradient(to right,rgba(251,198,7,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(251,198,7,.04) 1px,transparent 1px)',
+            backgroundImage: 'linear-gradient(to right,rgba(201,168,118,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(201,168,118,.04) 1px,transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'radial-gradient(circle,rgba(251,198,7,.07) 1px,transparent 1px)',
+            backgroundImage: 'radial-gradient(circle,rgba(201,168,118,.07) 1px,transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
-          <div style={{ position: 'absolute', top: '-10rem', right: '-10rem', width: '35rem', height: '35rem', borderRadius: '50%', background: 'rgba(251,198,7,.06)', filter: 'blur(100px)' }} />
-          <div style={{ position: 'absolute', bottom: '-10rem', left: '-10rem', width: '30rem', height: '30rem', borderRadius: '50%', background: 'rgba(251,198,7,.04)', filter: 'blur(100px)' }} />
+          <div style={{ position: 'absolute', top: '-10rem', right: '-10rem', width: '35rem', height: '35rem', borderRadius: '50%', background: 'rgba(201,168,118,.06)', filter: 'blur(100px)' }} />
+          <div style={{ position: 'absolute', bottom: '-10rem', left: '-10rem', width: '30rem', height: '30rem', borderRadius: '50%', background: 'rgba(201,168,118,.04)', filter: 'blur(100px)' }} />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ position: 'relative', zIndex: 10 }}>
@@ -104,14 +104,14 @@ const Home = () => {
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '8px',
                   padding: '6px 14px', borderRadius: '9999px',
-                  border: '1px solid rgba(251,198,7,.5)',
-                  background: 'rgba(251,198,7,.08)',
+                  border: '1px solid rgba(201,168,118,.5)',
+                  background: 'rgba(201,168,118,.08)',
                   marginBottom: '1.5rem',
                 }}
               >
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#FBC607', display: 'inline-block' }} />
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#C9A876', display: 'inline-block' }} />
                 {/* FIXED: was text-xs, now text-base on mobile */}
-                <span className='text-base lg:text-sm' style={{ fontWeight: 300, color: '#FBC607', letterSpacing: '.05em' }}>
+                <span className='text-base lg:text-sm' style={{ fontWeight: 300, color: '#C9A876', letterSpacing: '.05em' }}>
                   Earn While You Complete Tasks
                 </span>
               </div>
@@ -124,7 +124,7 @@ const Home = () => {
                 Turn your Time {' '}
                 <br />
                 into {' '}
-                <span style={{ color: '#FBC607' }}>Real Rewards</span>
+                <span style={{ color: '#C9A876' }}>Real Rewards</span>
               </h1>
 
               <p
@@ -154,7 +154,7 @@ const Home = () => {
                   { value: `$${(stats.rewards / 1000).toFixed(0)}K+`, label: 'Rewards Paid' },
                 ].map((s, i) => (
                   <div key={i}>
-                    <div style={{ fontWeight: 800, color: '#FBC607' }} className='lg:text-2xl text-xl'>{s.value}</div>
+                    <div style={{ fontWeight: 800, color: '#C9A876' }} className='lg:text-2xl text-xl'>{s.value}</div>
                     {/* FIXED: was text-sm on mobile, now text-base */}
                     <div style={{ color: 'rgba(255,255,255,.4)', marginTop: '4px' }} className='text-base lg:text-lg'>{s.label}</div>
                   </div>
@@ -171,15 +171,15 @@ const Home = () => {
       </section>
 
       {/* ── FEATURES ── */}
-      <section className='p-3' id="tasks" style={{ padding: '6rem 0', background: '#0d0d0d', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 50%,rgba(251,198,7,.04) 0%,transparent 60%)', pointerEvents: 'none' }} />
+      <section className='p-3' id="tasks" style={{ padding: '6rem 0', background: '#14100a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 50%,rgba(201,168,118,.04) 0%,transparent 60%)', pointerEvents: 'none' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             {/* FIXED: was .8rem, now text-base on mobile */}
             <span className='text-base lg:text-sm' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-              border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+              border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
             }}>Features</span>
             <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
@@ -199,7 +199,7 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay={i * 80}
                 style={{
-                  background: '#141414',
+                  background: '#1c160f',
                   border: '1px solid rgba(255,255,255,.06)',
                   borderRadius: '16px',
                   padding: '2rem',
@@ -207,7 +207,7 @@ const Home = () => {
                   cursor: 'default',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(251,198,7,.3)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(201,168,118,.3)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={(e) => {
@@ -217,11 +217,11 @@ const Home = () => {
               >
                 <div style={{
                   width: '52px', height: '52px', borderRadius: '12px',
-                  background: 'rgba(251,198,7,.1)',
-                  border: '1px solid rgba(251,198,7,.2)',
+                  background: 'rgba(201,168,118,.1)',
+                  border: '1px solid rgba(201,168,118,.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }} className='m-auto mb-5'>
-                  <f.icon style={{ width: 24, height: 24, color: '#FBC607' }} />
+                  <f.icon style={{ width: 24, height: 24, color: '#C9A876' }} />
                 </div>
                 {/* FIXED: was text-base (already ok), keeping it */}
                 <h3 style={{ fontWeight: 700, marginBottom: '.5rem' }} className='text-base lg:text-lg'>{f.title}</h3>
@@ -234,17 +234,17 @@ const Home = () => {
       </section>
 
       {/* ── STATISTICS ── */}
-      <section className='p-3' style={{ padding: '5rem 0', background: '#0a0a0a' }}>
+      <section className='p-3' style={{ padding: '5rem 0', background: '#000000' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
             {/* FIXED: was .8rem */}
             <span className='text-base lg:text-sm' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-              border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+              border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
             }}>Statistics</span>
             <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
-              Completely Leverage <span style={{ color: '#FBC607' }}>Kubotai</span>
+              Completely Leverage <span style={{ color: '#C9A876' }}>Kubotai</span>
             </h2>
             {/* FIXED: was implicit small */}
             <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
@@ -259,7 +259,7 @@ const Home = () => {
               { value: '$500K+', label: 'Rewards Paid' },
             ].map((s, i) => (
               <div key={i} data-aos="zoom-in" data-aos-delay={i * 120}>
-                <div style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', fontWeight: 900, color: '#FBC607', lineHeight: 1 }}>{s.value}</div>
+                <div style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', fontWeight: 900, color: '#C9A876', lineHeight: 1 }}>{s.value}</div>
                 {/* FIXED: was .95rem, now text-base */}
                 <div className='text-base' style={{ color: 'rgba(255,255,255,.4)', marginTop: '.5rem' }}>{s.label}</div>
               </div>
@@ -269,8 +269,8 @@ const Home = () => {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className='p-3' id="how-it-works" style={{ padding: '6rem 0', background: '#0d0d0d', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 50%,rgba(251,198,7,.03) 0%,transparent 60%)', pointerEvents: 'none' }} />
+      <section className='p-3' id="how-it-works" style={{ padding: '6rem 0', background: '#14100a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 50%,rgba(201,168,118,.03) 0%,transparent 60%)', pointerEvents: 'none' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className='flex flex-col-reverse lg:gap-20 gap-3 lg:flex-row'>
@@ -287,11 +287,11 @@ const Home = () => {
                 {/* FIXED: was .8rem */}
                 <span className='text-base lg:text-sm' style={{
                   display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-                  border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+                  border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
                   fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
                 }}>Feature</span>
                 <h2 style={{ fontSize: 'clamp(2rem,4vw,2.8rem)', fontWeight: 800, marginBottom: '.75rem' }}>
-                  How It <span style={{ color: '#FBC607' }}>Works</span>
+                  How It <span style={{ color: '#C9A876' }}>Works</span>
                 </h2>
                 {/* FIXED: was implicit small */}
                 <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '420px' }}>
@@ -310,15 +310,15 @@ const Home = () => {
                       display: 'flex', alignItems: 'flex-start', gap: '1rem',
                       padding: '1.25rem 1.5rem',
                       borderRadius: '14px',
-                      border: activeStep === index ? '1px solid rgba(251,198,7,.45)' : '1px solid rgba(255,255,255,.06)',
-                      background: activeStep === index ? 'rgba(251,198,7,.05)' : '#141414',
+                      border: activeStep === index ? '1px solid rgba(201,168,118,.45)' : '1px solid rgba(255,255,255,.06)',
+                      background: activeStep === index ? 'rgba(201,168,118,.05)' : '#1c160f',
                       cursor: 'pointer',
                       transition: 'all .3s',
                     }}
                   >
                     <div style={{
                       width: '44px', height: '44px', borderRadius: '12px', flexShrink: 0,
-                      background: activeStep === index ? '#FBC607' : 'rgba(255,255,255,.05)',
+                      background: activeStep === index ? '#C9A876' : 'rgba(255,255,255,.05)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       transition: 'background .3s',
                     }}>
@@ -333,7 +333,7 @@ const Home = () => {
                       </p>
                     </div>
                     {/* FIXED: was 1.4rem, now text-base on mobile */}
-                    <div className='text-base lg:text-2xl' style={{ marginLeft: 'auto', fontWeight: 900, color: activeStep === index ? '#FBC607' : 'rgba(255,255,255,.08)' }}>
+                    <div className='text-base lg:text-2xl' style={{ marginLeft: 'auto', fontWeight: 900, color: activeStep === index ? '#C9A876' : 'rgba(255,255,255,.08)' }}>
                       {step.step}
                     </div>
                   </div>
@@ -345,17 +345,17 @@ const Home = () => {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className='p-3' style={{ padding: '6rem 0', background: '#0a0a0a' }}>
+      <section className='p-3' style={{ padding: '6rem 0', background: '#000000' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             {/* FIXED: was .8rem */}
             <span className='text-base lg:text-sm' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-              border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+              border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
             }}>Testimonial</span>
             <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
-              What Our Users <span style={{ color: '#FBC607' }}>Say</span>
+              What Our Users <span style={{ color: '#C9A876' }}>Say</span>
             </h2>
             {/* FIXED: was implicit small */}
             <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
@@ -370,14 +370,14 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
                 style={{
-                  background: '#141414',
+                  background: '#1c160f',
                   border: '1px solid rgba(255,255,255,.06)',
                   borderRadius: '16px',
                   padding: '2rem',
                   transition: 'border-color .3s,transform .3s',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(251,198,7,.25)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(201,168,118,.25)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={(e) => {
@@ -387,7 +387,7 @@ const Home = () => {
               >
                 <div style={{ display: 'flex', gap: '2px', marginBottom: '1rem' }}>
                   {[...Array(5)].map((_, j) => (
-                    <span key={j} style={{ color: '#FBC607', fontSize: '1rem' }}>★</span>
+                    <span key={j} style={{ color: '#C9A876', fontSize: '1rem' }}>★</span>
                   ))}
                 </div>
                 {/* FIXED: was .9rem, now text-base */}
@@ -398,7 +398,7 @@ const Home = () => {
                   {/* FIXED: was .95rem, now text-base */}
                   <div className='text-base' style={{ fontWeight: 700 }}>{t.name}</div>
                   {/* FIXED: was .8rem, now text-base */}
-                  <div className='text-base' style={{ color: '#FBC607', marginTop: '2px' }}>{t.role}</div>
+                  <div className='text-base' style={{ color: '#C9A876', marginTop: '2px' }}>{t.role}</div>
                 </div>
               </div>
             ))}
@@ -407,14 +407,14 @@ const Home = () => {
       </section>
 
       {/* ── ABOUT ── */}
-      <section className='p-3' id="about" style={{ padding: '6rem 0', background: '#0d0d0d', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 50%,rgba(251,198,7,.03) 0%,transparent 60%)', pointerEvents: 'none' }} />
+      <section className='p-3' id="about" style={{ padding: '6rem 0', background: '#14100a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 50%,rgba(201,168,118,.03) 0%,transparent 60%)', pointerEvents: 'none' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className='grid lg:grid-cols-2 grid-cols-1 gap-10 items-center'>
             <div data-aos="fade-right">
               <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '1.25rem' }}>
-                About <span style={{ color: '#FBC607' }}>Kubotai</span>
+                About <span style={{ color: '#C9A876' }}>Kubotai</span>
               </h2>
               {/* FIXED: was implicit, now text-base */}
               <p className='text-base' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.8, marginBottom: '1rem' }}>
@@ -431,22 +431,22 @@ const Home = () => {
                   borderRadius: '16px',
                   padding: '1.5rem 1.75rem',
                   marginBottom: '2rem',
-                  background: 'linear-gradient(135deg, rgba(251,198,7,.10) 0%, rgba(251,198,7,.04) 100%)',
-                  border: '1px solid rgba(251,198,7,.35)',
+                  background: 'linear-gradient(135deg, rgba(201,168,118,.10) 0%, rgba(201,168,118,.04) 100%)',
+                  border: '1px solid rgba(201,168,118,.35)',
                   overflow: 'hidden',
                 }}
               >
                 <div style={{
                   position: 'absolute', top: '-30px', right: '-30px',
                   width: '120px', height: '120px', borderRadius: '50%',
-                  background: 'rgba(251,198,7,.12)', filter: 'blur(40px)',
+                  background: 'rgba(201,168,118,.12)', filter: 'blur(40px)',
                   pointerEvents: 'none',
                 }} />
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.75rem' }}>
                   <div style={{
                     width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
-                    background: '#FBC607',
+                    background: '#C9A876',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -458,7 +458,7 @@ const Home = () => {
                   {/* FIXED: was .75rem, now text-base */}
                   <span className='text-base lg:text-xs' style={{
                     fontWeight: 700, letterSpacing: '.1em',
-                    color: '#FBC607', textTransform: 'uppercase',
+                    color: '#C9A876', textTransform: 'uppercase',
                   }}>
                     Investment Opportunity
                   </span>
@@ -484,10 +484,10 @@ const Home = () => {
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                     <div style={{
                       width: '44px', height: '44px', borderRadius: '12px', flexShrink: 0,
-                      background: 'rgba(251,198,7,.1)', border: '1px solid rgba(251,198,7,.2)',
+                      background: 'rgba(201,168,118,.1)', border: '1px solid rgba(201,168,118,.2)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
-                      <item.icon style={{ width: 20, height: 20, color: '#FBC607' }} />
+                      <item.icon style={{ width: 20, height: 20, color: '#C9A876' }} />
                     </div>
                     <div>
                       {/* FIXED: was implicit, now text-base */}
@@ -520,14 +520,14 @@ const Home = () => {
       <FaqSection />
 
       {/* ── CTA ── */}
-      <section className='p-3' style={{ padding: '6rem 0', background: '#0d0d0d', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 50%,rgba(251,198,7,.06) 0%,transparent 65%)', pointerEvents: 'none' }} />
+      <section className='p-3' style={{ padding: '6rem 0', background: '#14100a', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 50%,rgba(201,168,118,.06) 0%,transparent 65%)', pointerEvents: 'none' }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div data-aos="zoom-in">
             {/* FIXED: was .8rem, now text-base */}
             <span className='text-base lg:text-sm' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-              border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+              border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1.5rem',
             }}>Revolutionary</span>
             <h2 style={{ fontSize: 'clamp(2rem,5vw,3.2rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1rem' }}>
@@ -543,7 +543,7 @@ const Home = () => {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '14px 36px', borderRadius: '10px',
-                background: '#FBC607', color: '#000',
+                background: '#C9A876', color: '#000',
                 fontWeight: 700,
                 textDecoration: 'none',
                 transition: 'opacity .2s,transform .2s',
@@ -575,13 +575,13 @@ const faqs = [
 const FaqSection = () => {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className='p-3' id="faq" style={{ padding: '6rem 0', background: '#0a0a0a' }}>
+    <section className='p-3' id="faq" style={{ padding: '6rem 0', background: '#000000' }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
           {/* FIXED: was .8rem, now text-base */}
           <span className='text-base lg:text-sm' style={{
             display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
-            border: '1px solid rgba(251,198,7,.4)', color: '#FBC607',
+            border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
             fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
           }}>FAQ</span>
           <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
@@ -600,11 +600,11 @@ const FaqSection = () => {
               data-aos="fade-up"
               data-aos-delay={i * 60}
               style={{
-                border: open === i ? '1px solid rgba(251,198,7,.35)' : '1px solid rgba(255,255,255,.07)',
+                border: open === i ? '1px solid rgba(201,168,118,.35)' : '1px solid rgba(255,255,255,.07)',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 transition: 'border-color .3s',
-                background: '#111',
+                background: '#1c160f',
               }}
             >
               <button
@@ -622,9 +622,9 @@ const FaqSection = () => {
                 {faq.q}
                 <span style={{
                   width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
-                  border: `1px solid ${open === i ? '#FBC607' : 'rgba(255,255,255,.15)'}`,
+                  border: `1px solid ${open === i ? '#C9A876' : 'rgba(255,255,255,.15)'}`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: open === i ? '#FBC607' : 'rgba(255,255,255,.3)',
+                  color: open === i ? '#C9A876' : 'rgba(255,255,255,.3)',
                   transition: 'all .3s',
                 }}
                   // FIXED: was text-base (already ok)

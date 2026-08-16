@@ -63,7 +63,7 @@ function MenuRow({ icon: Icon, label, onClick, danger = false }: any) {
                     <Icon
                         className={`w-4 h-4 ${danger
                             ? "text-red-400"
-                            : "text-white/60 group-hover:text-[#FBC607] transition-colors"
+                            : "text-white/60 group-hover:text-[#C9A876] transition-colors"
                             }`}
                     />
                 </div>
@@ -187,7 +187,7 @@ export default function Profile() {
                                 {/* edit badge */}
                                 <button
                                     onClick={() => navigate("/dashboard/profile/edit")}
-                                    className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#FBC607] flex items-center justify-center shadow-[0_2px_12px_rgba(251,198,7,.5)] hover:scale-110 transition-transform"
+                                    className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#C9A876] flex items-center justify-center shadow-[0_2px_12px_rgba(251,198,7,.5)] hover:scale-110 transition-transform"
                                 >
                                     <FiEdit2 className="w-3 h-3 text-black" />
                                 </button>
@@ -213,7 +213,7 @@ export default function Profile() {
                             <div className="flex items-center gap-3">
                                 <span className="text-3xl leading-none">🎁</span>
                                 <div>
-                                    <p className="text-sm font-bold text-[#FBC607]">
+                                    <p className="text-sm font-bold text-[#C9A876]">
                                         Referral Challenge
                                     </p>
                                     <p className="text-xs text-[rgba(251,198,7,.6)]">
@@ -368,7 +368,7 @@ export default function Profile() {
                             </div>
                         ) : (
                             <div className="w-full bg-white/[0.05] border border-[rgba(251,198,7,.25)] rounded-lg p-4 mb-6">
-                                <p className="text-xl font-bold tracking-[0.18em] dm-mono text-[#FBC607]">
+                                <p className="text-xl font-bold tracking-[0.18em] dm-mono text-[#C9A876]">
                                     {inviteCode ?? "N/A"}
                                 </p>
                             </div>
@@ -387,7 +387,7 @@ export default function Profile() {
                                 className={`flex-1 py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed
                   ${copied
                                         ? "bg-green-500 text-white shadow-[0_4px_20px_rgba(16,185,129,.35)]"
-                                        : "bg-[#FBC607] text-black"
+                                        : "bg-[#C9A876] text-black"
                                     }`}
                             >
                                 {copied ? (

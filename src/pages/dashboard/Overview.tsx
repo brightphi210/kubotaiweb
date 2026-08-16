@@ -73,7 +73,7 @@ function BatteryBar({ progress }: { progress: number }) {
           <div
             key={idx}
             className={`w-10 h-24 rounded-xl transition-all duration-300 ease-out ${idx < filledSegments
-              ? 'bg-linear-to-t from-[#FBC607] to-[#FFD933] shadow-[0_0_24px_rgba(251,198,7,.9)] scale-105'
+              ? 'bg-[#C9A876] shadow-[0_0_24px_rgba(251,198,7,.9)] scale-105'
               : 'bg-neutral-900 border border-white/20'
               }`}
           />
@@ -151,10 +151,10 @@ function EarningItem({ amount, timestamp, type = 'mining', title = '' }: { amoun
 
   const getColor = () => {
     switch (type) {
-      case 'task': return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
-      case 'referral': return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
+      case 'task': return 'bg-[rgba(251,198,7,.15)] text-[#C9A876]';
+      case 'referral': return 'bg-[rgba(251,198,7,.15)] text-[#C9A876]';
       case 'mining': return 'bg-black/10 text-[#4ade80]';
-      default: return 'bg-[rgba(251,198,7,.15)] text-[#FBC607]';
+      default: return 'bg-[rgba(251,198,7,.15)] text-[#C9A876]';
     }
   };
 
@@ -383,7 +383,7 @@ const Overview = () => {
               <div className="flex flex-col items-center gap-8">
                 <BatteryBar progress={ringProgress} />
                 <div className="text-center space-y-3">
-                  <p className="text-5xl font-bold dm-mono text-transparent bg-clip-text bg-gradient-to-r from-[#FBC607] to-[#FFD933]">
+                  <p className="text-5xl font-bold dm-mono text-transparent bg-clip-text bg-[#C9A876]">
                     {tokensMinedThisSession.toFixed(4)}
                   </p>
                   <p className="text-base font-semibold text-[#4ade80]">
@@ -397,15 +397,15 @@ const Overview = () => {
             <div className="fu d3 flex items-center justify-center gap-4">
               {/* timer pill */}
               <div className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/8">
-                <FiClock className="w-4 h-4 text-[#FBC607]" />
+                <FiClock className="w-4 h-4 text-[#C9A876]" />
                 <span className="text-sm font-semibold dm-mono">{fmt(timeElapsed)}</span>
               </div>
 
               {/* boost */}
               <button
                 className={`flex items-center gap-2 px-7 py-2.5 rounded-2xl font-bold text-sm cursor-pointer transition-all duration-200 ${isMining
-                  ? 'bg-[rgba(251,198,7,.15)] text-[#FBC607] border border-[#FBC607]'
-                  : 'bg-[#FBC607] text-black border-none shadow-[0_4px_24px_rgba(251,198,7,.4)]'
+                  ? 'bg-[rgba(251,198,7,.15)] text-[#C9A876] border border-[#C9A876]'
+                  : 'bg-[#C9A876] text-black border-none shadow-[0_4px_24px_rgba(251,198,7,.4)]'
                   }`}
               >
                 <FiZap className="w-4 h-4" />
@@ -418,7 +418,7 @@ const Overview = () => {
               {/* session time */}
               <div className="rounded-2xl p-4 bg-white/4 border border-white/[0.07] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(251,198,7,.12)] transition-all duration-200">
                 <div className="flex items-center gap-1.5 mb-2">
-                  <FiClock className="w-3.5 h-3.5 text-[#FBC607]" />
+                  <FiClock className="w-3.5 h-3.5 text-[#C9A876]" />
                   <span className="text-[0.7rem] text-white/50">Session Time</span>
                 </div>
                 <p className="text-xl font-bold dm-mono">{fmt(timeElapsed)}</p>
@@ -427,13 +427,13 @@ const Overview = () => {
               {/* total balance */}
               <div className="rounded-2xl p-4 bg-[rgba(251,198,7,.06)] border border-[rgba(251,198,7,.15)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(251,198,7,.12)] transition-all duration-200">
                 <div className="flex items-center gap-1.5 mb-2">
-                  <MdOutlineAccountBalanceWallet className="w-3.5 h-3.5 text-[#FBC607]" />
+                  <MdOutlineAccountBalanceWallet className="w-3.5 h-3.5 text-[#C9A876]" />
                   <span className="text-[0.7rem] text-white/50">Total Token Balance</span>
                 </div>
                 {userTokenLoading ? (
                   <div className="w-20 h-6 bg-white/10 rounded animate-pulse" />
                 ) : (
-                  <p className="text-xl font-bold text-[#FBC607]">
+                  <p className="text-xl font-bold text-[#C9A876]">
                     {userTokenData?.quantity?.toFixed(3) ?? '0.000'}
                     <span className="text-[0.75rem] text-[rgba(251,198,7,.7)] ml-1">(KU)</span>
                   </p>
@@ -462,14 +462,14 @@ const Overview = () => {
               ) : !isMining ? (
                 <button
                   onClick={handleMiningToggle}
-                  className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm cursor-pointer bg-linear-to-br from-[#FBC607] to-[#e0a800] text-black shadow-[0_4px_20px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity"
+                  className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm cursor-pointer bg-linear-to-br from-[#C9A876] to-[#e0a800] text-black shadow-[0_4px_20px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity"
                 >
                   <FiPlay className="w-4 h-4" />
                   Start Mining
                 </button>
               ) : (
-                <div className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm bg-[rgba(251,198,7,.15)] text-[#FBC607] border border-[rgba(251,198,7,.4)]">
-                  <span className="w-3.5 h-3.5 border-2 border-[#FBC607]/40 border-t-[#FBC607] rounded-full animate-spin" />
+                <div className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm bg-[rgba(251,198,7,.15)] text-[#C9A876] border border-[rgba(251,198,7,.4)]">
+                  <span className="w-3.5 h-3.5 border-2 border-[#C9A876]/40 border-t-[#C9A876] rounded-full animate-spin" />
                   Mining in progress…
                 </div>
               )}
@@ -477,7 +477,7 @@ const Overview = () => {
               {/* check earnings */}
               <button
                 onClick={handleViewAllEarnings}
-                className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/5 border border-white/10 text-[#FBC607] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200"
+                className="py-3.5 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm cursor-pointer bg-white/5 border border-white/10 text-[#C9A876] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200"
               >
                 <FiBarChart2 className="w-4 h-4" />
                 Check Earnings
@@ -497,7 +497,7 @@ const Overview = () => {
                 <button
                   onClick={onRefresh}
                   disabled={refreshing}
-                  className="text-[0.7rem] text-[#FBC607]/70 hover:text-[#FBC607] transition-colors disabled:opacity-50 font-medium"
+                  className="text-[0.7rem] text-[#C9A876]/70 hover:text-[#C9A876] transition-colors disabled:opacity-50 font-medium"
                 >
                   {refreshing ? 'Refreshing…' : 'Refresh'}
                 </button>

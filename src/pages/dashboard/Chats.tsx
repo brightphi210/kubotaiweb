@@ -8,7 +8,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
         <div className={`flex items-start gap-2.5 ${isUser ? 'flex-row-reverse' : ''}`}>
             <div
                 className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center text-sm ${isUser
-                    ? 'bg-[rgba(251,198,7,.15)] border-[rgba(251,198,7,.4)] text-[#FBC607]'
+                    ? 'bg-[rgba(251,198,7,.15)] border-[rgba(251,198,7,.4)] text-[#C9A876]'
                     : 'bg-white/5 border-white/10 text-white/70'
                     }`}
             >
@@ -16,7 +16,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
             </div>
             <div
                 className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap dm-sans ${isUser
-                    ? 'bg-[#FBC607] text-black font-medium rounded-tr-sm'
+                    ? 'bg-[#C9A876] text-black font-medium rounded-tr-sm'
                     : 'bg-white/5 border border-white/8 text-white rounded-tl-sm'
                     }`}
             >
@@ -73,7 +73,7 @@ const Chats = () => {
                     <div className="fu flex items-center justify-between px-5 pt-5 pb-4 border-b border-white/8 shrink-0">
                         <div>
                             <h1 className="text-lg font-bold flex items-center gap-2">
-                                <FiZap className="w-4 h-4 text-[#FBC607]" />
+                                <FiZap className="w-4 h-4 text-[#C9A876]" />
                                 Assistant
                             </h1>
                             <p className="text-[0.7rem] text-white/40">Ask anything, get an instant answer</p>
@@ -81,7 +81,7 @@ const Chats = () => {
                         {messages.length > 0 && (
                             <button
                                 onClick={clearChat}
-                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#FBC607] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200"
+                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#C9A876] hover:bg-[rgba(251,198,7,.08)] transition-all duration-200"
                                 title="Clear chat"
                             >
                                 <FiTrash2 className="w-3.5 h-3.5" />
@@ -96,7 +96,7 @@ const Chats = () => {
                         {messages.length === 0 ? (
                             <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center px-6">
                                 <div className="w-14 h-14 rounded-2xl bg-[rgba(251,198,7,.1)] border border-[rgba(251,198,7,.2)] flex items-center justify-center">
-                                    <FiZap className="w-6 h-6 text-[#FBC607]" />
+                                    <FiZap className="w-6 h-6 text-[#C9A876]" />
                                 </div>
                                 <p className="text-sm font-semibold text-white">Start a conversation</p>
                                 <p className="text-xs text-white/40 max-w-[220px]">
@@ -133,7 +133,7 @@ const Chats = () => {
                                     onClick={handleSend}
                                     disabled={!input.trim() || isSending}
                                     className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 ${input.trim() && !isSending
-                                        ? 'bg-[#FBC607] text-black shadow-[0_4px_20px_rgba(251,198,7,.35)] hover:opacity-90'
+                                        ? 'bg-[#C9A876] text-black shadow-[0_4px_20px_rgba(251,198,7,.35)] hover:opacity-90'
                                         : 'bg-white/5 text-white/20 cursor-not-allowed'
                                         }`}
                                 >

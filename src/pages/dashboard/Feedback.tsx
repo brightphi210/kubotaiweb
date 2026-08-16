@@ -28,7 +28,7 @@ const SuccessDialog = ({ visible, onClose }: any) => {
                 </p>
                 <button
                     onClick={onClose}
-                    className="w-full py-3 rounded-lg font-bold text-sm text-[#FBC607] bg-[rgba(251,198,7,.1)] border border-[rgba(251,198,7,.3)] hover:bg-[rgba(251,198,7,.15)] transition-colors"
+                    className="w-full py-3 rounded-lg font-bold text-sm text-[#C9A876] bg-[rgba(251,198,7,.1)] border border-[rgba(251,198,7,.3)] hover:bg-[rgba(251,198,7,.15)] transition-colors"
                 >
                     Close
                 </button>
@@ -126,7 +126,7 @@ const Feedback = () => {
                                         onClick={() => handleSelectType(type)}
                                         disabled={isPending}
                                         className={`type-pill px-4 py-2 rounded-full text-xs font-medium border transition-colors ${selectedType === type
-                                            ? 'bg-[#FBC607] text-black border-[#FBC607] shadow-[0_4px_16px_rgba(251,198,7,.3)]'
+                                            ? 'bg-[#C9A876] text-black border-[#C9A876] shadow-[0_4px_16px_rgba(251,198,7,.3)]'
                                             : 'bg-white/[0.05] text-white/50 border-white/[0.1] hover:border-white/[0.2] hover:text-white/70'
                                             }`}
                                     >
@@ -240,7 +240,7 @@ const Feedback = () => {
                             <button
                                 onClick={handleSubmit(onSubmit)}
                                 disabled={isPending}
-                                className="w-full py-3 rounded-lg font-bold text-sm text-black bg-gradient-to-br from-[#FBC607] to-[#e0a800] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
+                                className="w-full py-3 rounded-lg font-bold text-sm text-black bg-gradient-to-br from-[#C9A876] to-[#e0a800] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
                             >
                                 {isPending ? (
                                     <>

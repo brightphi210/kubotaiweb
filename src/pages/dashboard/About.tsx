@@ -117,7 +117,7 @@ const About = ({ navigate }: any) => {
                                 <div className="flex items-center gap-3.5">
                                     <div className={'w-9 h-9 rounded-xl flex items-center justify-center border bg-[rgba(251,198,7,.08)] border-[rgba(251,198,7,.2)]'}
                                     >
-                                        <FiFileText size={16} className={'text-[#FBC607]'} />
+                                        <FiFileText size={16} className={'text-[#C9A876]'} />
                                     </div>
                                     <span className={`text-sm font-semibold text-white`}>
                                         White Paper
@@ -136,7 +136,7 @@ const About = ({ navigate }: any) => {
                                 <div className="flex items-center gap-3.5">
                                     <div className={'w-9 h-9 rounded-xl flex items-center justify-center border bg-[rgba(251,198,7,.08)] border-[rgba(251,198,7,.2)]'}
                                     >
-                                        <FiHelpCircle size={16} className={'text-[#FBC607]'} />
+                                        <FiHelpCircle size={16} className={'text-[#C9A876]'} />
                                     </div>
                                     <span className={`text-sm font-semibold text-white`}>
                                         FAQs
@@ -172,7 +172,7 @@ const About = ({ navigate }: any) => {
                                                 : 'bg-[rgba(251,198,7,.08)] border-[rgba(251,198,7,.2)]'
                                             }`}
                                         >
-                                            <Icon size={16} className={item.danger ? 'text-red-400' : 'text-[#FBC607]'} />
+                                            <Icon size={16} className={item.danger ? 'text-red-400' : 'text-[#C9A876]'} />
                                         </div>
                                         <span className={`text-sm font-semibold ${item.danger ? 'text-red-400' : 'text-white'}`}>
                                             {item.label}

@@ -4,9 +4,9 @@ import { useGetNotifications } from '../../hooks/queries/allQueries'
 const ICON_MAP = {
     info: { icon: FiInfo, bg: 'rgba(59,130,246,0.15)', border: 'rgba(59,130,246,0.3)', color: '#60A5FA' },
     success: { icon: FiCheckCircle, bg: 'rgba(16,185,129,0.15)', border: 'rgba(16,185,129,0.3)', color: '#4ADE80' },
-    warning: { icon: FiAlertTriangle, bg: 'rgba(251,198,7,0.15)', border: 'rgba(251,198,7,0.3)', color: '#FBC607' },
+    warning: { icon: FiAlertTriangle, bg: 'rgba(251,198,7,0.15)', border: 'rgba(251,198,7,0.3)', color: '#C9A876' },
     message: { icon: FiMessageCircle, bg: 'rgba(168,85,247,0.15)', border: 'rgba(168,85,247,0.3)', color: '#C084FC' },
-    earning: { icon: FiDollarSign, bg: 'rgba(251,198,7,0.15)', border: 'rgba(251,198,7,0.3)', color: '#FBC607' },
+    earning: { icon: FiDollarSign, bg: 'rgba(251,198,7,0.15)', border: 'rgba(251,198,7,0.3)', color: '#C9A876' },
 }
 
 function timeAgo(dateStr: string | number | Date) {
@@ -64,7 +64,7 @@ function NotificationItem({ notification, index }: NotificationItemProps) {
             </div>
 
             {!notification.read && (
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[#FBC607] mt-1.5 shadow-[0_0_6px_rgba(251,198,7,.6)]" />
+                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[#C9A876] mt-1.5 shadow-[0_0_6px_rgba(251,198,7,.6)]" />
             )}
         </div>
     )
@@ -109,7 +109,7 @@ const Notification = () => {
                         </div>
                         {unreadCount > 0 && (
                             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(251,198,7,.15)] border border-[rgba(251,198,7,.3)]">
-                                <span className="text-xs font-semibold text-[#FBC607] dm-mono">{unreadCount} new</span>
+                                <span className="text-xs font-semibold text-[#C9A876] dm-mono">{unreadCount} new</span>
                             </div>
                         )}
                     </div>
@@ -118,7 +118,7 @@ const Notification = () => {
                     {!isLoading && notifications.length > 0 && (
                         <div className="fu flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] mb-6" style={{ animationDelay: '.1s' }}>
                             <div className="flex items-center gap-2">
-                                <FiBell size={14} className="text-[#FBC607]" />
+                                <FiBell size={14} className="text-[#C9A876]" />
                                 <span className="text-sm text-white/60 dm-mono">{notifications.length} total notifications</span>
                             </div>
                         </div>

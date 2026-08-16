@@ -111,7 +111,7 @@ const ChangePassword = () => {
                         <div className="relative mb-4">
                             <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(251,198,7,.15)_0%,transparent_70%)] scale-150" />
                             <div className="relative w-16 h-16 rounded-full bg-[rgba(251,198,7,.1)] border border-[rgba(251,198,7,.3)] flex items-center justify-center">
-                                <FiShield size={28} className="text-[#FBC607]" />
+                                <FiShield size={28} className="text-[#C9A876]" />
                             </div>
                         </div>
                         <p className="text-sm text-white/40 text-center max-w-[220px]">Keep your account secure with a strong password</p>
@@ -181,7 +181,7 @@ const ChangePassword = () => {
                         <button
                             onClick={handleSubmit(onSubmit)}
                             disabled={isPending}
-                            className="w-full py-2.5 rounded-lg font-bold text-sm text-black bg-gradient-to-br from-[#FBC607] to-[#e0a800] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
+                            className="w-full py-2.5 rounded-lg font-bold text-sm text-black bg-gradient-to-br from-[#C9A876] to-[#e0a800] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
                         >
                             {isPending ? (
                                 <>

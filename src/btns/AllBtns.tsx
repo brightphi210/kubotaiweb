@@ -10,7 +10,7 @@ export const SolidBtn = ({ text, onClick }: btnsProps) => {
             style={{
                 width: '100%',
                 padding: '12px 24px',
-                background: '#FBC607',
+                background: '#C9A876',
                 color: '#000',
                 border: 'none',
                 borderRadius: '10px',

@@ -69,7 +69,7 @@ const Navbar = () => {
               style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
             >
               <img src={generalImages.logo} alt="Kubotai Logo" style={{ width: 32, height: 32 }} />
-              <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#FBC607', letterSpacing: '-0.01em' }}>
+              <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#C9A876', letterSpacing: '-0.01em' }}>
                 Kubotai
               </span>
             </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#FBC607'}
+                  onMouseEnter={(e) => (e.currentTarget as HTMLAnchorElement).style.color = '#C9A876'}
                   onMouseLeave={(e) => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'}
                 >
                   {link.name}
@@ -107,28 +107,19 @@ const Navbar = () => {
                     gap: '8px',
                     padding: '9px 20px',
                     borderRadius: '10px',
-                    background: 'rgba(251,198,7,0.12)',
+                    background: '#C9A876',
                     border: '1px solid rgba(251,198,7,0.3)',
-                    color: '#FBC607',
+                    color: 'black',
                     fontSize: '0.875rem',
                     fontWeight: 700,
                     cursor: 'pointer',
                     transition: 'all 0.2s',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(251,198,7,0.2)';
-                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(251,198,7,0.6)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(251,198,7,0.12)';
-                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(251,198,7,0.3)';
                   }}
                 >
                   <FiGrid style={{ width: 15, height: 15 }} />
                   Dashboard
                 </button>
               ) : (
-                /* ── logged out: show Log In + Get Started ── */
                 <>
                   <Link
                     to="/login"
@@ -217,7 +208,7 @@ const Navbar = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img src={generalImages.logo} alt="Kubotai Logo" style={{ width: 28, height: 28 }} />
-            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#FBC607' }}>Kubotai</span>
+            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#C9A876' }}>Kubotai</span>
           </div>
           <button
             onClick={() => setIsOpen(false)}
@@ -255,8 +246,8 @@ const Navbar = () => {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLAnchorElement;
-                el.style.color = '#FBC607';
-                el.style.borderLeftColor = '#FBC607';
+                el.style.color = '#C9A876';
+                el.style.borderLeftColor = '#C9A876';
                 el.style.background = 'rgba(251,198,7,0.05)';
               }}
               onMouseLeave={(e) => {
@@ -288,9 +279,8 @@ const Navbar = () => {
                 gap: '8px',
                 padding: '13px',
                 borderRadius: '10px',
-                background: 'rgba(251,198,7,0.12)',
-                border: '1px solid rgba(251,198,7,0.3)',
-                color: '#FBC607',
+                background: '#C9A876',
+                color: 'black',
                 fontSize: '0.875rem',
                 fontWeight: 700,
                 cursor: 'pointer',

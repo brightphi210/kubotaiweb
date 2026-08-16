@@ -284,7 +284,7 @@ const NewsDetail: React.FC<NewsDetailProps> = () => {
         <div className="max-w-3xl mx-auto px-5 py-8 slide-down pb-40">
           {/* ─── Featured Image ─── */}
           {newsData.image_url && (
-            <div className="relative h-80 rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-[#FBC607] to-yellow-600">
+            <div className="relative h-80 rounded-2xl overflow-hidden mb-8 bg-[#C9A876]">
               <img
                 src={newsData.image_url}
                 alt={newsData.title}
@@ -302,7 +302,7 @@ const NewsDetail: React.FC<NewsDetailProps> = () => {
           {/* ─── Meta Info ─── */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8 pb-8 border-b border-white/[0.08]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FBC607] to-yellow-600 flex items-center justify-center text-sm font-bold">
+              <div className="w-10 h-10 rounded-full bg-[#C9A876] flex items-center justify-center text-sm font-bold">
                 {newsData.author?.charAt(0).toUpperCase() || 'K'}
               </div>
               <div>
@@ -416,7 +416,7 @@ const NewsDetail: React.FC<NewsDetailProps> = () => {
                           className="w-8 h-8 rounded-full object-cover"
                         />
                       ) : (
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FBC607] to-yellow-600 flex items-center justify-center text-xs font-bold">
+                        <div className="w-8 h-8 rounded-full bg-[#C9A876] flex items-center justify-center text-xs font-bold">
                           {comment.owner.username.charAt(0).toUpperCase()}
                         </div>
                       )}

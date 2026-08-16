@@ -45,8 +45,8 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
 
   const activeStyle = {
     background: 'rgba(251,198,7,.12)',
-    borderLeft: '3px solid #FBC607',
-    color: '#FBC607',
+    borderLeft: '3px solid #C9A876',
+    color: '#C9A876',
     fontWeight: 600,
   };
   const inactiveStyle = {
@@ -102,7 +102,7 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
         .bottom-nav-item { transition: color .2s; }
         .bottom-nav-market-btn {
           width: 52px; height: 52px;
-          background: #FBC607;
+          background: #C9A876;
           border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           box-shadow: 0 4px 20px rgba(251,198,7,.45);
@@ -140,14 +140,14 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
         {/* Logo + collapse toggle */}
         <div className="px-5 mb-8 flex items-center justify-between">
           <Link to="/">
-            <h2 className="text-xl font-semibold" style={{ color: '#FBC607' }}>
+            <h2 className="text-xl font-semibold" style={{ color: '#C9A876' }}>
               {!isCollapsed && 'KubotAI'}
             </h2>
           </Link>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
             className="hidden p-1 rounded"
-            style={{ color: '#FBC607' }}
+            style={{ color: '#C9A876' }}
             title={isCollapsed ? 'Expand' : 'Collapse'}
           >
             {isCollapsed ? '→' : '←'}
@@ -168,16 +168,16 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
             style={{
               background: 'rgba(251,198,7,.1)',
               border: '1px solid rgba(251,198,7,.35)',
-              color: '#FBC607',
+              color: '#C9A876',
               fontWeight: 600,
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = '#FBC607';
+              (e.currentTarget as HTMLButtonElement).style.background = '#C9A876';
               (e.currentTarget as HTMLButtonElement).style.color = '#000';
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background = 'rgba(251,198,7,.1)';
-              (e.currentTarget as HTMLButtonElement).style.color = '#FBC607';
+              (e.currentTarget as HTMLButtonElement).style.color = '#C9A876';
             }}
             title={isCollapsed ? 'Logout' : ''}
           >
@@ -205,14 +205,14 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
         <button
           onClick={onClose}
           className="absolute right-4 top-4 p-1 rounded"
-          style={{ color: '#FBC607' }}
+          style={{ color: '#C9A876' }}
         >
           <FiX className="w-6 h-6" />
         </button>
 
         <div className="px-5 mb-8">
           <Link to="/">
-            <h2 className="text-xl font-semibold" style={{ color: '#FBC607' }}>
+            <h2 className="text-xl font-semibold" style={{ color: '#C9A876' }}>
               KubotAI
             </h2>
           </Link>
@@ -229,7 +229,7 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
             style={{
               background: 'rgba(251,198,7,.1)',
               border: '1px solid rgba(251,198,7,.35)',
-              color: '#FBC607',
+              color: '#C9A876',
               fontWeight: 600,
             }}
           >
@@ -271,19 +271,19 @@ const SideBar = ({ isOpen = true, onClose }: SideBarProps) => {
               key={item.id}
               to={item.path}
               className="bottom-nav-item flex flex-col items-center gap-0.5 pt-2 pb-1 px-3"
-              style={{ color: isActive ? '#FBC607' : 'rgba(255,255,255,.45)' }}
+              style={{ color: isActive ? '#C9A876' : 'rgba(255,255,255,.45)' }}
             >
               {item.icon}
               <span
                 className="text-[10px] font-medium"
-                style={{ color: isActive ? '#FBC607' : 'rgba(255,255,255,.4)' }}
+                style={{ color: isActive ? '#C9A876' : 'rgba(255,255,255,.4)' }}
               >
                 {item.name}
               </span>
               {isActive && (
                 <span
                   className="w-1 h-1 rounded-full"
-                  style={{ background: '#FBC607' }}
+                  style={{ background: '#C9A876' }}
                 />
               )}
             </Link>

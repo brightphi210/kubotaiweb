@@ -201,7 +201,7 @@ const ProfileEdit = () => {
                         <button
                             onClick={handleSubmit(onSubmit)}
                             disabled={isUpdating || isLoading}
-                            className="w-full py-3 rounded-lg font-bold text-sm text-black bg-gradient-to-br from-[#FBC607] to-[#e0a800] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
+                            className="w-full py-3 rounded-lg font-bold text-sm text-black bg-[#C9A876] shadow-[0_4px_24px_rgba(251,198,7,.35)] hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2"
                         >
                             {isUpdating ? (
                                 <>

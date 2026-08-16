@@ -28,7 +28,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: FaTwitter, href: '#', label: 'Twitter', color: 'hover:text-blue-400' },
-    { icon: FaFacebook, href: '#', label: 'Facebook', color: 'hover:text-[#FBC607]' },
+    { icon: FaFacebook, href: '#', label: 'Facebook', color: 'hover:text-[#C9A876]' },
     { icon: FaInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-500' },
     { icon: FaTelegram, href: '#', label: 'Telegram', color: 'hover:text-blue-500' },
     { icon: FaDiscord, href: '#', label: 'Discord', color: 'hover:text-indigo-500' },
@@ -48,11 +48,11 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
               <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
-                <HiMail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FBC607] shrink-0" />
+                <HiMail className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A876] shrink-0" />
                 <span className="text-[15px] sm:text-sm break-all">support@kubotai.com</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
-                <IoLocationSharp className="w-4 h-4 sm:w-5 sm:h-5 text-[#FBC607] shrink-0" />
+                <IoLocationSharp className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A876] shrink-0" />
                 <span className="text-[15px] sm:text-sm">Available Worldwide</span>
               </div>
             </div>
@@ -97,7 +97,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -114,7 +114,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-base sm:text-sm text-neutral-200 hover:text-[#FBC607] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-base sm:text-sm text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -131,13 +131,13 @@ const Footer = () => {
               © {currentYear} Kubotai. All rights reserved.
             </p>
             <div className="flex items-center gap-4 sm:gap-6">
-              <a href="#privacy" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#privacy" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Privacy
               </a>
-              <a href="#terms" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#terms" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Terms
               </a>
-              <a href="#cookies" className="text-neutral-600 hover:text-[#FBC607] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#cookies" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
                 Cookies
               </a>
             </div>
