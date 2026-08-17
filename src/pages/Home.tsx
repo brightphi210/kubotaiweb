@@ -110,8 +110,8 @@ const Home = () => {
                 }}
               >
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#C9A876', display: 'inline-block' }} />
-                {/* FIXED: was text-xs, now text-base on mobile */}
-                <span className='text-base lg:text-sm' style={{ fontWeight: 300, color: '#C9A876', letterSpacing: '.05em' }}>
+                {/* FIXED: was text-xs, now text-lg on mobile */}
+                <span className='text-lg lg:text-lg' style={{ fontWeight: 300, color: '#C9A876', letterSpacing: '.05em' }}>
                   Earn While You Complete Tasks
                 </span>
               </div>
@@ -130,8 +130,8 @@ const Home = () => {
               <p
                 data-aos="fade-up"
                 data-aos-delay="160"
-                // FIXED: was implicit small size, now text-base on mobile
-                className='text-base'
+                // FIXED: was implicit small size, now text-lg on mobile
+                className='text-lg'
                 style={{ color: 'rgba(255,255,255,.5)', lineHeight: 1.75, maxWidth: '480px', marginBottom: '2rem' }}
               >
                 Complete simple tasks, refer friends, and earn tokens that can be redeemed for real rewards. Join thousands of users already earning on Kubotai.
@@ -155,8 +155,8 @@ const Home = () => {
                 ].map((s, i) => (
                   <div key={i}>
                     <div style={{ fontWeight: 800, color: '#C9A876' }} className='lg:text-2xl text-xl'>{s.value}</div>
-                    {/* FIXED: was text-sm on mobile, now text-base */}
-                    <div style={{ color: 'rgba(255,255,255,.4)', marginTop: '4px' }} className='text-base lg:text-lg'>{s.label}</div>
+                    {/* FIXED: was text-lg on mobile, now text-lg */}
+                    <div style={{ color: 'rgba(255,255,255,.4)', marginTop: '4px' }} className='text-lg lg:text-lg'>{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -176,17 +176,17 @@ const Home = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            {/* FIXED: was .8rem, now text-base on mobile */}
-            <span className='text-base lg:text-sm' style={{
+            {/* FIXED: was .8rem, now text-lg on mobile */}
+            <span className='text-lg lg:text-lg' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
               border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
             }}>Features</span>
-            <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
+            <h2 style={{ fontWeight: 800, marginBottom: '.75rem' }} className='text-5xl'>
               Future Breakdown
             </h2>
-            {/* FIXED: was implicit small, now text-base */}
-            <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
+            {/* FIXED: was implicit small, now text-lg */}
+            <p className='text-lg' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
               Secure, scalable, and decentralized solutions for your digital assets—experience the future of financial freedom.
             </p>
           </div>
@@ -223,10 +223,8 @@ const Home = () => {
                 }} className='m-auto mb-5'>
                   <f.icon style={{ width: 24, height: 24, color: '#C9A876' }} />
                 </div>
-                {/* FIXED: was text-base (already ok), keeping it */}
-                <h3 style={{ fontWeight: 700, marginBottom: '.5rem' }} className='text-base lg:text-lg'>{f.title}</h3>
-                {/* FIXED: was text-base (already ok), keeping it */}
-                <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7 }} className='text-base'>{f.description}</p>
+                <h3 style={{ fontWeight: 700, marginBottom: '.5rem' }} className='text-lg lg:text-2xl'>{f.title}</h3>
+                <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7 }} className='text-lg'>{f.description}</p>
               </div>
             ))}
           </div>
@@ -238,7 +236,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
             {/* FIXED: was .8rem */}
-            <span className='text-base lg:text-sm' style={{
+            <span className='text-lg lg:text-lg' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
               border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
@@ -247,7 +245,7 @@ const Home = () => {
               Completely Leverage <span style={{ color: '#C9A876' }}>Kubotai</span>
             </h2>
             {/* FIXED: was implicit small */}
-            <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
+            <p className='text-lg' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
               Leading the way in reward innovation, we are redefining how users earn and redeem tokens bringing a new era of financial opportunity.
             </p>
           </div>
@@ -260,8 +258,8 @@ const Home = () => {
             ].map((s, i) => (
               <div key={i} data-aos="zoom-in" data-aos-delay={i * 120}>
                 <div style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', fontWeight: 900, color: '#C9A876', lineHeight: 1 }}>{s.value}</div>
-                {/* FIXED: was .95rem, now text-base */}
-                <div className='text-base' style={{ color: 'rgba(255,255,255,.4)', marginTop: '.5rem' }}>{s.label}</div>
+                {/* FIXED: was .95rem, now text-lg */}
+                <div className='text-lg' style={{ color: 'rgba(255,255,255,.4)', marginTop: '.5rem' }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -285,7 +283,7 @@ const Home = () => {
             <div>
               <div data-aos="fade-left">
                 {/* FIXED: was .8rem */}
-                <span className='text-base lg:text-sm' style={{
+                <span className='text-lg lg:text-lg' style={{
                   display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
                   border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
                   fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
@@ -294,7 +292,7 @@ const Home = () => {
                   How It <span style={{ color: '#C9A876' }}>Works</span>
                 </h2>
                 {/* FIXED: was implicit small */}
-                <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '420px' }}>
+                <p className='text-lg' style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '420px' }}>
                   Get started in three simple steps and begin earning tokens today
                 </p>
               </div>
@@ -325,15 +323,15 @@ const Home = () => {
                       <step.icon style={{ width: 22, height: 22, color: activeStep === index ? '#000' : 'rgba(255,255,255,.35)' }} />
                     </div>
                     <div>
-                      {/* FIXED: was text-base (ok), added pt-2 instead of pt-5 for better mobile spacing */}
-                      <h3 style={{ fontWeight: 700, marginBottom: '.3rem' }} className='text-base lg:text-lg pt-2'>{step.title}</h3>
-                      {/* FIXED: was text-base (already ok) */}
-                      <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.6 }} className='text-base'>
+                      {/* FIXED: was text-lg (ok), added pt-2 instead of pt-5 for better mobile spacing */}
+                      <h3 style={{ fontWeight: 700, marginBottom: '.3rem' }} className='text-lg lg:text-lg pt-2'>{step.title}</h3>
+                      {/* FIXED: was text-lg (already ok) */}
+                      <p style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.6 }} className='text-lg'>
                         {step.description}
                       </p>
                     </div>
-                    {/* FIXED: was 1.4rem, now text-base on mobile */}
-                    <div className='text-base lg:text-2xl' style={{ marginLeft: 'auto', fontWeight: 900, color: activeStep === index ? '#C9A876' : 'rgba(255,255,255,.08)' }}>
+                    {/* FIXED: was 1.4rem, now text-lg on mobile */}
+                    <div className='text-lg lg:text-2xl' style={{ marginLeft: 'auto', fontWeight: 900, color: activeStep === index ? '#C9A876' : 'rgba(255,255,255,.08)' }}>
                       {step.step}
                     </div>
                   </div>
@@ -349,7 +347,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             {/* FIXED: was .8rem */}
-            <span className='text-base lg:text-sm' style={{
+            <span className='text-lg lg:text-lg' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
               border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
@@ -358,7 +356,7 @@ const Home = () => {
               What Our Users <span style={{ color: '#C9A876' }}>Say</span>
             </h2>
             {/* FIXED: was implicit small */}
-            <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
+            <p className='text-lg' style={{ color: 'rgba(255,255,255,.4)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
               Join thousands of satisfied users earning tokens every day
             </p>
           </div>
@@ -390,15 +388,15 @@ const Home = () => {
                     <span key={j} style={{ color: '#C9A876', fontSize: '1rem' }}>★</span>
                   ))}
                 </div>
-                {/* FIXED: was .9rem, now text-base */}
-                <p className='text-base' style={{ color: 'rgba(255,255,255,.55)', lineHeight: 1.7, fontStyle: 'italic', marginBottom: '1.5rem' }}>
+                {/* FIXED: was .9rem, now text-lg */}
+                <p className='text-lg' style={{ color: 'rgba(255,255,255,.55)', lineHeight: 1.7, fontStyle: 'italic', marginBottom: '1.5rem' }}>
                   "{t.content}"
                 </p>
                 <div>
-                  {/* FIXED: was .95rem, now text-base */}
-                  <div className='text-base' style={{ fontWeight: 700 }}>{t.name}</div>
-                  {/* FIXED: was .8rem, now text-base */}
-                  <div className='text-base' style={{ color: '#C9A876', marginTop: '2px' }}>{t.role}</div>
+                  {/* FIXED: was .95rem, now text-lg */}
+                  <div className='text-lg' style={{ fontWeight: 700 }}>{t.name}</div>
+                  {/* FIXED: was .8rem, now text-lg */}
+                  <div className='text-lg' style={{ color: '#C9A876', marginTop: '2px' }}>{t.role}</div>
                 </div>
               </div>
             ))}
@@ -416,11 +414,11 @@ const Home = () => {
               <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '1.25rem' }}>
                 About <span style={{ color: '#C9A876' }}>Kubotai</span>
               </h2>
-              {/* FIXED: was implicit, now text-base */}
-              <p className='text-base' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.8, marginBottom: '1rem' }}>
+              {/* FIXED: was implicit, now text-lg */}
+              <p className='text-lg' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.8, marginBottom: '1rem' }}>
                 Kubotai is a revolutionary platform that connects users with opportunities to earn real rewards. We believe everyone should have access to simple ways to earn money online.
               </p>
-              <p className='text-base' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.8, marginBottom: '1.75rem' }}>
+              <p className='text-lg' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.8, marginBottom: '1.75rem' }}>
                 Since our launch, we've helped thousands of users earn tokens by completing tasks and referring friends. Our platform is trusted, secure, and designed to provide the best earning experience possible.
               </p>
 
@@ -455,8 +453,8 @@ const Home = () => {
                       <path d="M7 12l3-4v3h4l-3 4v-3H7z" fill="#000" />
                     </svg>
                   </div>
-                  {/* FIXED: was .75rem, now text-base */}
-                  <span className='text-base lg:text-xs' style={{
+                  {/* FIXED: was .75rem, now text-lg */}
+                  <span className='text-lg lg:text-xs' style={{
                     fontWeight: 700, letterSpacing: '.1em',
                     color: '#C9A876', textTransform: 'uppercase',
                   }}>
@@ -464,12 +462,12 @@ const Home = () => {
                   </span>
                 </div>
 
-                {/* FIXED: was 1.05rem, now text-base */}
-                <p className='text-base lg:text-lg' style={{ fontWeight: 700, color: '#fff', lineHeight: 1.5, marginBottom: '.5rem' }}>
+                {/* FIXED: was 1.05rem, now text-lg */}
+                <p className='text-lg lg:text-lg' style={{ fontWeight: 700, color: '#fff', lineHeight: 1.5, marginBottom: '.5rem' }}>
                   Invest in the Future of Solid State Batteries.
                 </p>
-                {/* FIXED: was .9rem, now text-base */}
-                <p className='text-base' style={{ color: 'rgba(255,255,255,.55)', lineHeight: 1.75, margin: 0 }}>
+                {/* FIXED: was .9rem, now text-lg */}
+                <p className='text-lg' style={{ color: 'rgba(255,255,255,.55)', lineHeight: 1.75, margin: 0 }}>
                   Your tokens are your shares to the future of this technology — powering the next generation of energy storage and creating lasting value for every holder.
                 </p>
               </div>
@@ -490,10 +488,10 @@ const Home = () => {
                       <item.icon style={{ width: 20, height: 20, color: '#C9A876' }} />
                     </div>
                     <div>
-                      {/* FIXED: was implicit, now text-base */}
-                      <div className='text-base' style={{ fontWeight: 700, marginBottom: '.2rem' }}>{item.title}</div>
-                      {/* FIXED: was .875rem, now text-base */}
-                      <div className='text-base' style={{ color: 'rgba(255,255,255,.4)' }}>{item.desc}</div>
+                      {/* FIXED: was implicit, now text-lg */}
+                      <div className='text-lg' style={{ fontWeight: 700, marginBottom: '.2rem' }}>{item.title}</div>
+                      {/* FIXED: was .875rem, now text-lg */}
+                      <div className='text-lg' style={{ color: 'rgba(255,255,255,.4)' }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -524,8 +522,8 @@ const Home = () => {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 50%,rgba(201,168,118,.06) 0%,transparent 65%)', pointerEvents: 'none' }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div data-aos="zoom-in">
-            {/* FIXED: was .8rem, now text-base */}
-            <span className='text-base lg:text-sm' style={{
+            {/* FIXED: was .8rem, now text-lg */}
+            <span className='text-lg lg:text-lg' style={{
               display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
               border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
               fontWeight: 600, letterSpacing: '.08em', marginBottom: '1.5rem',
@@ -533,13 +531,13 @@ const Home = () => {
             <h2 style={{ fontSize: 'clamp(2rem,5vw,3.2rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1rem' }}>
               Enhance Your Earning With<br />Seamless Task Rewards
             </h2>
-            {/* FIXED: was 1rem inline style only — kept but added text-base class */}
-            <p className='text-base' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '480px', margin: '0 auto 2.5rem' }}>
+            {/* FIXED: was 1rem inline style only — kept but added text-lg class */}
+            <p className='text-lg' style={{ color: 'rgba(255,255,255,.45)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '480px', margin: '0 auto 2.5rem' }}>
               Join a thriving community committed to maximising your rewards, empowering your earning journey with trust, innovation, and security.
             </p>
             <a
               href="#signup"
-              className='text-base'
+              className='text-lg'
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '14px 36px', borderRadius: '10px',
@@ -578,8 +576,8 @@ const FaqSection = () => {
     <section className='p-3' id="faq" style={{ padding: '6rem 0', background: '#000000' }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          {/* FIXED: was .8rem, now text-base */}
-          <span className='text-base lg:text-sm' style={{
+          {/* FIXED: was .8rem, now text-lg */}
+          <span className='text-lg lg:text-lg' style={{
             display: 'inline-block', padding: '5px 16px', borderRadius: '9999px',
             border: '1px solid rgba(201,168,118,.4)', color: '#C9A876',
             fontWeight: 600, letterSpacing: '.08em', marginBottom: '1rem',
@@ -587,8 +585,8 @@ const FaqSection = () => {
           <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, marginBottom: '.75rem' }}>
             Get Answers To Common Questions
           </h2>
-          {/* FIXED: was implicit, now text-base */}
-          <p className='text-base' style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7 }}>
+          {/* FIXED: was implicit, now text-lg */}
+          <p className='text-lg' style={{ color: 'rgba(255,255,255,.4)', lineHeight: 1.7 }}>
             From basics to advanced topics, find everything you need to know right here. Let us help you simplify the process and find the clarity you're looking for.
           </p>
         </div>
@@ -616,8 +614,8 @@ const FaqSection = () => {
                   color: '#fff', fontWeight: 500, textAlign: 'left',
                   gap: '1rem',
                 }}
-                // FIXED: was text-base (already ok)
-                className='text-base'
+                // FIXED: was text-lg (already ok)
+                className='text-lg'
               >
                 {faq.q}
                 <span style={{
@@ -627,14 +625,14 @@ const FaqSection = () => {
                   color: open === i ? '#C9A876' : 'rgba(255,255,255,.3)',
                   transition: 'all .3s',
                 }}
-                  // FIXED: was text-base (already ok)
-                  className='text-base'>
+                  // FIXED: was text-lg (already ok)
+                  className='text-lg'>
                   {open === i ? '−' : '+'}
                 </span>
               </button>
               {open === i && (
-                // FIXED: was text-base (already ok)
-                <div style={{ padding: '0 1.5rem 1.25rem', color: 'rgba(255,255,255,.45)', lineHeight: 1.7 }} className='text-base'>
+                // FIXED: was text-lg (already ok)
+                <div style={{ padding: '0 1.5rem 1.25rem', color: 'rgba(255,255,255,.45)', lineHeight: 1.7 }} className='text-lg'>
                   {faq.a}
                 </div>
               )}

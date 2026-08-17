@@ -49,11 +49,11 @@ const Footer = () => {
             <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
               <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
                 <HiMail className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A876] shrink-0" />
-                <span className="text-[15px] sm:text-sm break-all">support@kubotai.com</span>
+                <span className="text-lg sm:text-lg break-all">support@kubotai.com</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 text-neutral-200">
                 <IoLocationSharp className="w-4 h-4 sm:w-5 sm:h-5 text-[#C9A876] shrink-0" />
-                <span className="text-[15px] sm:text-sm">Available Worldwide</span>
+                <span className="text-lg sm:text-lg">Available Worldwide</span>
               </div>
             </div>
 
@@ -80,7 +80,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[15px] sm:text-sm text-neutral-200 dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-lg sm:text-lg text-neutral-200 dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -91,13 +91,13 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
+            <h3 className="text-neutral-600 font-bold mb-3 sm:mb-4 text-lg sm:text-base">Company</h3>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[15px] sm:text-sm text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-lg sm:text-lg text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -114,7 +114,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-base sm:text-sm text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
+                    className="text-base sm:text-lg text-neutral-200 hover:text-[#C9A876] dark:hover:text-blue-400 transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -127,17 +127,17 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="pt-6 sm:pt-8 border-t border-gray-200 dark:border-neutral-800">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <p className="text-neutral-600 text-[15px] sm:text-sm text-center sm:text-left">
+            <p className="text-neutral-600 text-lg sm:text-lg text-center sm:text-left">
               © {currentYear} Kubotai. All rights reserved.
             </p>
             <div className="flex items-center gap-4 sm:gap-6">
-              <a href="#privacy" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#privacy" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-lg sm:text-lg transition-colors duration-300">
                 Privacy
               </a>
-              <a href="#terms" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#terms" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-lg sm:text-lg transition-colors duration-300">
                 Terms
               </a>
-              <a href="#cookies" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-[15px] sm:text-sm transition-colors duration-300">
+              <a href="#cookies" className="text-neutral-600 hover:text-[#C9A876] dark:hover:text-blue-400 text-lg sm:text-lg transition-colors duration-300">
                 Cookies
               </a>
             </div>
